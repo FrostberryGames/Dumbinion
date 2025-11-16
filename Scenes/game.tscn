@@ -1,11 +1,19 @@
-[gd_scene load_steps=6 format=3 uid="uid://da350s8wlnwoi"]
+[gd_scene load_steps=18 format=3 uid="uid://da350s8wlnwoi"]
 
 [ext_resource type="Shader" uid="uid://lopds28d3gwy" path="res://Shaders/Background.gdshader" id="1_ebmjs"]
+[ext_resource type="Texture2D" uid="uid://5ea4dnd1bahv" path="res://AssetsButLikeWithADifferentNameIncaseYouAlreadyHaveAnAssetsFolder/province.png" id="2_1l0tm"]
+[ext_resource type="Texture2D" uid="uid://cu6c2hd4dqdyf" path="res://AssetsButLikeWithADifferentNameIncaseYouAlreadyHaveAnAssetsFolder/gold.png" id="2_qxrlw"]
+[ext_resource type="Texture2D" uid="uid://d0l4irkr30xqj" path="res://AssetsButLikeWithADifferentNameIncaseYouAlreadyHaveAnAssetsFolder/duchy.png" id="4_v158k"]
+[ext_resource type="Texture2D" uid="uid://ds5bbdk37cjop" path="res://AssetsButLikeWithADifferentNameIncaseYouAlreadyHaveAnAssetsFolder/silver.png" id="5_h4fw4"]
+[ext_resource type="Texture2D" uid="uid://bw5cxc3pdw830" path="res://AssetsButLikeWithADifferentNameIncaseYouAlreadyHaveAnAssetsFolder/estate.png" id="6_ldgsr"]
+[ext_resource type="Texture2D" uid="uid://b2vxiynocjwa7" path="res://AssetsButLikeWithADifferentNameIncaseYouAlreadyHaveAnAssetsFolder/copper.png" id="7_o5yvi"]
+[ext_resource type="Texture2D" uid="uid://b3wnpqv6eu3hp" path="res://AssetsButLikeWithADifferentNameIncaseYouAlreadyHaveAnAssetsFolder/curse.png" id="8_v158k"]
+[ext_resource type="Texture2D" uid="uid://c8wg0a4tcnve6" path="res://AssetsButLikeWithADifferentNameIncaseYouAlreadyHaveAnAssetsFolder/TempCard.png" id="9_h4fw4"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qxrlw"]
 shader = ExtResource("1_ebmjs")
 shader_parameter/bottom_color = Color(0.2, 0.20392157, 0.27450982, 1)
-shader_parameter/top_color = Color(0.30705482, 0.31256276, 0.40882856, 1)
+shader_parameter/top_color = Color(0.30588236, 0.3137255, 0.40784314, 1)
 shader_parameter/wave_amp = 0.0290000013775
 shader_parameter/wave_size = 1.518000024605
 shader_parameter/wave_time_mul = 0.51500002120262
@@ -21,6 +29,25 @@ font_color = Color(0.91764706, 0.9372549, 0.9372549, 1)
 [sub_resource type="LabelSettings" id="LabelSettings_qxrlw"]
 font_size = 12
 font_color = Color(0.91764706, 0.9372549, 0.9372549, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h4fw4"]
+bg_color = Color(0.116589464, 0.12711835, 0.1727655, 0.6627451)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v158k"]
+bg_color = Color(0, 0, 0, 0.28235295)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="LabelSettings" id="LabelSettings_h4fw4"]
+font_color = Color(1, 0.11372549, 0.1254902, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ldgsr"]
 
 [node name="Game" type="Node"]
 
@@ -72,6 +99,7 @@ horizontal_alignment = 2
 
 [node name="TurnInfo" type="Control" parent="PlayerUI"]
 layout_mode = 1
+anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -205.5
@@ -111,3 +139,594 @@ text = "0 Actions, 0 buys, 0 coins"
 label_settings = SubResource("LabelSettings_qxrlw")
 horizontal_alignment = 1
 uppercase = true
+
+[node name="Field" type="HBoxContainer" parent="PlayerUI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 50.0
+offset_top = -165.0
+offset_bottom = 165.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 30
+
+[node name="Resources" type="PanelContainer" parent="PlayerUI/Field"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_h4fw4")
+
+[node name="Margin" type="MarginContainer" parent="PlayerUI/Field/Resources"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Grid" type="GridContainer" parent="PlayerUI/Field/Resources/Margin"]
+layout_mode = 2
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+columns = 2
+
+[node name="Province" type="TextureButton" parent="PlayerUI/Field/Resources/Margin/Grid"]
+layout_mode = 2
+texture_normal = ExtResource("2_1l0tm")
+stretch_mode = 0
+
+[node name="PileInfo" type="PanelContainer" parent="PlayerUI/Field/Resources/Margin/Grid/Province"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_v158k")
+
+[node name="MarginContainer" type="MarginContainer" parent="PlayerUI/Field/Resources/Margin/Grid/Province/PileInfo"]
+layout_mode = 2
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_right = 3
+
+[node name="Remaining" type="Label" parent="PlayerUI/Field/Resources/Margin/Grid/Province/PileInfo/MarginContainer"]
+layout_mode = 2
+text = "12"
+label_settings = SubResource("LabelSettings_h4fw4")
+
+[node name="Cost" type="Label" parent="PlayerUI/Field/Resources/Margin/Grid/Province/PileInfo/MarginContainer"]
+layout_mode = 2
+text = "8"
+label_settings = SubResource("LabelSettings_ldgsr")
+horizontal_alignment = 2
+
+[node name="Gold" type="TextureButton" parent="PlayerUI/Field/Resources/Margin/Grid"]
+layout_mode = 2
+texture_normal = ExtResource("2_qxrlw")
+stretch_mode = 0
+
+[node name="PileInfo" type="PanelContainer" parent="PlayerUI/Field/Resources/Margin/Grid/Gold"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_v158k")
+
+[node name="MarginContainer" type="MarginContainer" parent="PlayerUI/Field/Resources/Margin/Grid/Gold/PileInfo"]
+layout_mode = 2
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_right = 3
+
+[node name="Remaining" type="Label" parent="PlayerUI/Field/Resources/Margin/Grid/Gold/PileInfo/MarginContainer"]
+layout_mode = 2
+text = "30"
+label_settings = SubResource("LabelSettings_h4fw4")
+
+[node name="Cost" type="Label" parent="PlayerUI/Field/Resources/Margin/Grid/Gold/PileInfo/MarginContainer"]
+layout_mode = 2
+text = "6"
+label_settings = SubResource("LabelSettings_ldgsr")
+horizontal_alignment = 2
+
+[node name="Duchy" type="TextureButton" parent="PlayerUI/Field/Resources/Margin/Grid"]
+layout_mode = 2
+texture_normal = ExtResource("4_v158k")
+stretch_mode = 0
+
+[node name="PileInfo" type="PanelContainer" parent="PlayerUI/Field/Resources/Margin/Grid/Duchy"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_v158k")
+
+[node name="MarginContainer" type="MarginContainer" parent="PlayerUI/Field/Resources/Margin/Grid/Duchy/PileInfo"]
+layout_mode = 2
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_right = 3
+
+[node name="Remaining" type="Label" parent="PlayerUI/Field/Resources/Margin/Grid/Duchy/PileInfo/MarginContainer"]
+layout_mode = 2
+text = "12"
+label_settings = SubResource("LabelSettings_h4fw4")
+
+[node name="Cost" type="Label" parent="PlayerUI/Field/Resources/Margin/Grid/Duchy/PileInfo/MarginContainer"]
+layout_mode = 2
+text = "5"
+label_settings = SubResource("LabelSettings_ldgsr")
+horizontal_alignment = 2
+
+[node name="Silver" type="TextureButton" parent="PlayerUI/Field/Resources/Margin/Grid"]
+layout_mode = 2
+texture_normal = ExtResource("5_h4fw4")
+stretch_mode = 0
+
+[node name="PileInfo" type="PanelContainer" parent="PlayerUI/Field/Resources/Margin/Grid/Silver"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_v158k")
+
+[node name="MarginContainer" type="MarginContainer" parent="PlayerUI/Field/Resources/Margin/Grid/Silver/PileInfo"]
+layout_mode = 2
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_right = 3
+
+[node name="Remaining" type="Label" parent="PlayerUI/Field/Resources/Margin/Grid/Silver/PileInfo/MarginContainer"]
+layout_mode = 2
+text = "30"
+label_settings = SubResource("LabelSettings_h4fw4")
+
+[node name="Cost" type="Label" parent="PlayerUI/Field/Resources/Margin/Grid/Silver/PileInfo/MarginContainer"]
+layout_mode = 2
+text = "3"
+label_settings = SubResource("LabelSettings_ldgsr")
+horizontal_alignment = 2
+
+[node name="Estate" type="TextureButton" parent="PlayerUI/Field/Resources/Margin/Grid"]
+layout_mode = 2
+texture_normal = ExtResource("6_ldgsr")
+stretch_mode = 0
+
+[node name="PileInfo" type="PanelContainer" parent="PlayerUI/Field/Resources/Margin/Grid/Estate"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_v158k")
+
+[node name="MarginContainer" type="MarginContainer" parent="PlayerUI/Field/Resources/Margin/Grid/Estate/PileInfo"]
+layout_mode = 2
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_right = 3
+
+[node name="Remaining" type="Label" parent="PlayerUI/Field/Resources/Margin/Grid/Estate/PileInfo/MarginContainer"]
+layout_mode = 2
+text = "12"
+label_settings = SubResource("LabelSettings_h4fw4")
+
+[node name="Cost" type="Label" parent="PlayerUI/Field/Resources/Margin/Grid/Estate/PileInfo/MarginContainer"]
+layout_mode = 2
+text = "2"
+label_settings = SubResource("LabelSettings_ldgsr")
+horizontal_alignment = 2
+
+[node name="Copper" type="TextureButton" parent="PlayerUI/Field/Resources/Margin/Grid"]
+layout_mode = 2
+texture_normal = ExtResource("7_o5yvi")
+stretch_mode = 0
+
+[node name="PileInfo" type="PanelContainer" parent="PlayerUI/Field/Resources/Margin/Grid/Copper"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_v158k")
+
+[node name="MarginContainer" type="MarginContainer" parent="PlayerUI/Field/Resources/Margin/Grid/Copper/PileInfo"]
+layout_mode = 2
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_right = 3
+
+[node name="Remaining" type="Label" parent="PlayerUI/Field/Resources/Margin/Grid/Copper/PileInfo/MarginContainer"]
+layout_mode = 2
+text = "30"
+label_settings = SubResource("LabelSettings_h4fw4")
+
+[node name="Cost" type="Label" parent="PlayerUI/Field/Resources/Margin/Grid/Copper/PileInfo/MarginContainer"]
+layout_mode = 2
+text = "1"
+label_settings = SubResource("LabelSettings_ldgsr")
+horizontal_alignment = 2
+
+[node name="Curse" type="TextureButton" parent="PlayerUI/Field/Resources/Margin/Grid"]
+layout_mode = 2
+texture_normal = ExtResource("8_v158k")
+stretch_mode = 0
+
+[node name="PileInfo" type="PanelContainer" parent="PlayerUI/Field/Resources/Margin/Grid/Curse"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_v158k")
+
+[node name="MarginContainer" type="MarginContainer" parent="PlayerUI/Field/Resources/Margin/Grid/Curse/PileInfo"]
+layout_mode = 2
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_right = 3
+
+[node name="Remaining" type="Label" parent="PlayerUI/Field/Resources/Margin/Grid/Curse/PileInfo/MarginContainer"]
+layout_mode = 2
+text = "20"
+label_settings = SubResource("LabelSettings_h4fw4")
+
+[node name="Cost" type="Label" parent="PlayerUI/Field/Resources/Margin/Grid/Curse/PileInfo/MarginContainer"]
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_ldgsr")
+horizontal_alignment = 2
+
+[node name="Kingdom" type="PanelContainer" parent="PlayerUI/Field"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_h4fw4")
+
+[node name="Margin" type="MarginContainer" parent="PlayerUI/Field/Kingdom"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Grid" type="GridContainer" parent="PlayerUI/Field/Kingdom/Margin"]
+layout_mode = 2
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+columns = 5
+
+[node name="Card" type="TextureButton" parent="PlayerUI/Field/Kingdom/Margin/Grid"]
+layout_mode = 2
+tooltip_text = "This is a cool tooltip"
+texture_normal = ExtResource("9_h4fw4")
+
+[node name="PileInfo" type="PanelContainer" parent="PlayerUI/Field/Kingdom/Margin/Grid/Card"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_v158k")
+
+[node name="MarginContainer" type="MarginContainer" parent="PlayerUI/Field/Kingdom/Margin/Grid/Card/PileInfo"]
+layout_mode = 2
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_right = 3
+
+[node name="Remaining" type="Label" parent="PlayerUI/Field/Kingdom/Margin/Grid/Card/PileInfo/MarginContainer"]
+layout_mode = 2
+text = "12"
+label_settings = SubResource("LabelSettings_h4fw4")
+
+[node name="Cost" type="Label" parent="PlayerUI/Field/Kingdom/Margin/Grid/Card/PileInfo/MarginContainer"]
+layout_mode = 2
+text = "8"
+label_settings = SubResource("LabelSettings_ldgsr")
+horizontal_alignment = 2
+
+[node name="Card2" type="TextureButton" parent="PlayerUI/Field/Kingdom/Margin/Grid"]
+layout_mode = 2
+tooltip_text = "This is a tool tip"
+texture_normal = ExtResource("9_h4fw4")
+
+[node name="PileInfo" type="PanelContainer" parent="PlayerUI/Field/Kingdom/Margin/Grid/Card2"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_v158k")
+
+[node name="MarginContainer" type="MarginContainer" parent="PlayerUI/Field/Kingdom/Margin/Grid/Card2/PileInfo"]
+layout_mode = 2
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_right = 3
+
+[node name="Remaining" type="Label" parent="PlayerUI/Field/Kingdom/Margin/Grid/Card2/PileInfo/MarginContainer"]
+layout_mode = 2
+text = "12"
+label_settings = SubResource("LabelSettings_h4fw4")
+
+[node name="Cost" type="Label" parent="PlayerUI/Field/Kingdom/Margin/Grid/Card2/PileInfo/MarginContainer"]
+layout_mode = 2
+text = "8"
+label_settings = SubResource("LabelSettings_ldgsr")
+horizontal_alignment = 2
+
+[node name="Card3" type="TextureButton" parent="PlayerUI/Field/Kingdom/Margin/Grid"]
+layout_mode = 2
+tooltip_text = "This is a tool tip"
+texture_normal = ExtResource("9_h4fw4")
+
+[node name="PileInfo" type="PanelContainer" parent="PlayerUI/Field/Kingdom/Margin/Grid/Card3"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_v158k")
+
+[node name="MarginContainer" type="MarginContainer" parent="PlayerUI/Field/Kingdom/Margin/Grid/Card3/PileInfo"]
+layout_mode = 2
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_right = 3
+
+[node name="Remaining" type="Label" parent="PlayerUI/Field/Kingdom/Margin/Grid/Card3/PileInfo/MarginContainer"]
+layout_mode = 2
+text = "12"
+label_settings = SubResource("LabelSettings_h4fw4")
+
+[node name="Cost" type="Label" parent="PlayerUI/Field/Kingdom/Margin/Grid/Card3/PileInfo/MarginContainer"]
+layout_mode = 2
+text = "8"
+label_settings = SubResource("LabelSettings_ldgsr")
+horizontal_alignment = 2
+
+[node name="Card4" type="TextureButton" parent="PlayerUI/Field/Kingdom/Margin/Grid"]
+layout_mode = 2
+tooltip_text = "This is a tool tip"
+texture_normal = ExtResource("9_h4fw4")
+
+[node name="PileInfo" type="PanelContainer" parent="PlayerUI/Field/Kingdom/Margin/Grid/Card4"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_v158k")
+
+[node name="MarginContainer" type="MarginContainer" parent="PlayerUI/Field/Kingdom/Margin/Grid/Card4/PileInfo"]
+layout_mode = 2
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_right = 3
+
+[node name="Remaining" type="Label" parent="PlayerUI/Field/Kingdom/Margin/Grid/Card4/PileInfo/MarginContainer"]
+layout_mode = 2
+text = "12"
+label_settings = SubResource("LabelSettings_h4fw4")
+
+[node name="Cost" type="Label" parent="PlayerUI/Field/Kingdom/Margin/Grid/Card4/PileInfo/MarginContainer"]
+layout_mode = 2
+text = "8"
+label_settings = SubResource("LabelSettings_ldgsr")
+horizontal_alignment = 2
+
+[node name="Card5" type="TextureButton" parent="PlayerUI/Field/Kingdom/Margin/Grid"]
+layout_mode = 2
+tooltip_text = "This is a tool tip"
+texture_normal = ExtResource("9_h4fw4")
+
+[node name="PileInfo" type="PanelContainer" parent="PlayerUI/Field/Kingdom/Margin/Grid/Card5"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_v158k")
+
+[node name="MarginContainer" type="MarginContainer" parent="PlayerUI/Field/Kingdom/Margin/Grid/Card5/PileInfo"]
+layout_mode = 2
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_right = 3
+
+[node name="Remaining" type="Label" parent="PlayerUI/Field/Kingdom/Margin/Grid/Card5/PileInfo/MarginContainer"]
+layout_mode = 2
+text = "12"
+label_settings = SubResource("LabelSettings_h4fw4")
+
+[node name="Cost" type="Label" parent="PlayerUI/Field/Kingdom/Margin/Grid/Card5/PileInfo/MarginContainer"]
+layout_mode = 2
+text = "8"
+label_settings = SubResource("LabelSettings_ldgsr")
+horizontal_alignment = 2
+
+[node name="Card6" type="TextureButton" parent="PlayerUI/Field/Kingdom/Margin/Grid"]
+layout_mode = 2
+tooltip_text = "This is a tool tip"
+texture_normal = ExtResource("9_h4fw4")
+
+[node name="PileInfo" type="PanelContainer" parent="PlayerUI/Field/Kingdom/Margin/Grid/Card6"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_v158k")
+
+[node name="MarginContainer" type="MarginContainer" parent="PlayerUI/Field/Kingdom/Margin/Grid/Card6/PileInfo"]
+layout_mode = 2
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_right = 3
+
+[node name="Remaining" type="Label" parent="PlayerUI/Field/Kingdom/Margin/Grid/Card6/PileInfo/MarginContainer"]
+layout_mode = 2
+text = "12"
+label_settings = SubResource("LabelSettings_h4fw4")
+
+[node name="Cost" type="Label" parent="PlayerUI/Field/Kingdom/Margin/Grid/Card6/PileInfo/MarginContainer"]
+layout_mode = 2
+text = "8"
+label_settings = SubResource("LabelSettings_ldgsr")
+horizontal_alignment = 2
+
+[node name="Card7" type="TextureButton" parent="PlayerUI/Field/Kingdom/Margin/Grid"]
+layout_mode = 2
+tooltip_text = "This is a tool tip"
+texture_normal = ExtResource("9_h4fw4")
+
+[node name="PileInfo" type="PanelContainer" parent="PlayerUI/Field/Kingdom/Margin/Grid/Card7"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_v158k")
+
+[node name="MarginContainer" type="MarginContainer" parent="PlayerUI/Field/Kingdom/Margin/Grid/Card7/PileInfo"]
+layout_mode = 2
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_right = 3
+
+[node name="Remaining" type="Label" parent="PlayerUI/Field/Kingdom/Margin/Grid/Card7/PileInfo/MarginContainer"]
+layout_mode = 2
+text = "12"
+label_settings = SubResource("LabelSettings_h4fw4")
+
+[node name="Cost" type="Label" parent="PlayerUI/Field/Kingdom/Margin/Grid/Card7/PileInfo/MarginContainer"]
+layout_mode = 2
+text = "8"
+label_settings = SubResource("LabelSettings_ldgsr")
+horizontal_alignment = 2
+
+[node name="Card8" type="TextureButton" parent="PlayerUI/Field/Kingdom/Margin/Grid"]
+layout_mode = 2
+tooltip_text = "This is a tool tip"
+texture_normal = ExtResource("9_h4fw4")
+
+[node name="PileInfo" type="PanelContainer" parent="PlayerUI/Field/Kingdom/Margin/Grid/Card8"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_v158k")
+
+[node name="MarginContainer" type="MarginContainer" parent="PlayerUI/Field/Kingdom/Margin/Grid/Card8/PileInfo"]
+layout_mode = 2
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_right = 3
+
+[node name="Remaining" type="Label" parent="PlayerUI/Field/Kingdom/Margin/Grid/Card8/PileInfo/MarginContainer"]
+layout_mode = 2
+text = "12"
+label_settings = SubResource("LabelSettings_h4fw4")
+
+[node name="Cost" type="Label" parent="PlayerUI/Field/Kingdom/Margin/Grid/Card8/PileInfo/MarginContainer"]
+layout_mode = 2
+text = "8"
+label_settings = SubResource("LabelSettings_ldgsr")
+horizontal_alignment = 2
+
+[node name="Card9" type="TextureButton" parent="PlayerUI/Field/Kingdom/Margin/Grid"]
+layout_mode = 2
+tooltip_text = "This is a tool tip"
+texture_normal = ExtResource("9_h4fw4")
+
+[node name="PileInfo" type="PanelContainer" parent="PlayerUI/Field/Kingdom/Margin/Grid/Card9"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_v158k")
+
+[node name="MarginContainer" type="MarginContainer" parent="PlayerUI/Field/Kingdom/Margin/Grid/Card9/PileInfo"]
+layout_mode = 2
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_right = 3
+
+[node name="Remaining" type="Label" parent="PlayerUI/Field/Kingdom/Margin/Grid/Card9/PileInfo/MarginContainer"]
+layout_mode = 2
+text = "12"
+label_settings = SubResource("LabelSettings_h4fw4")
+
+[node name="Cost" type="Label" parent="PlayerUI/Field/Kingdom/Margin/Grid/Card9/PileInfo/MarginContainer"]
+layout_mode = 2
+text = "8"
+label_settings = SubResource("LabelSettings_ldgsr")
+horizontal_alignment = 2
+
+[node name="Card10" type="TextureButton" parent="PlayerUI/Field/Kingdom/Margin/Grid"]
+layout_mode = 2
+tooltip_text = "This is a tool tip"
+texture_normal = ExtResource("9_h4fw4")
+
+[node name="PileInfo" type="PanelContainer" parent="PlayerUI/Field/Kingdom/Margin/Grid/Card10"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_v158k")
+
+[node name="MarginContainer" type="MarginContainer" parent="PlayerUI/Field/Kingdom/Margin/Grid/Card10/PileInfo"]
+layout_mode = 2
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_right = 3
+
+[node name="Remaining" type="Label" parent="PlayerUI/Field/Kingdom/Margin/Grid/Card10/PileInfo/MarginContainer"]
+layout_mode = 2
+text = "12"
+label_settings = SubResource("LabelSettings_h4fw4")
+
+[node name="Cost" type="Label" parent="PlayerUI/Field/Kingdom/Margin/Grid/Card10/PileInfo/MarginContainer"]
+layout_mode = 2
+text = "8"
+label_settings = SubResource("LabelSettings_ldgsr")
+horizontal_alignment = 2
