@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://bnwk7ohkqiwye"]
+
+[ext_resource type="PackedScene" uid="uid://djkm75sn2env" path="res://Scenes/base_card.tscn" id="1_78yvq"]
+
+[node name="Market" instance=ExtResource("1_78yvq")]
+anchors_preset = 0
+cards = 1
+actions = 1
+buys = 1
+money = 1
+cost = 5

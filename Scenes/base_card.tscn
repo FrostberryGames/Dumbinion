@@ -1,0 +1,81 @@
+[gd_scene load_steps=5 format=3 uid="uid://djkm75sn2env"]
+
+[ext_resource type="Script" uid="uid://bu6iy7ksdg3sq" path="res://base_card.gd" id="1_ldaoi"]
+[ext_resource type="Texture2D" uid="uid://dd8gcp0j5jxe4" path="res://Assets/Placeholder texture.png" id="2_3i23m"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ueoly"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+corner_detail = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ldaoi"]
+bg_color = Color(0.77, 0.7270083, 0.2541, 0.99607843)
+corner_radius_top_left = 9
+corner_radius_top_right = 9
+corner_radius_bottom_right = 9
+corner_radius_bottom_left = 9
+
+[node name="BaseCard" type="PanelContainer"]
+anchors_preset = -1
+offset_right = 113.0
+offset_bottom = 2.0
+grow_horizontal = 2
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ueoly")
+script = ExtResource("1_ldaoi")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="CardName" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Base Card"
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 98.917)
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("2_3i23m")
+expand_mode = 1
+
+[node name="CardEffects" type="Label" parent="VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+horizontal_alignment = 1
+uppercase = true
+
+[node name="CardDesc" type="Label" parent="VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "Place Holder card description"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="CardCost" type="Label" parent="."]
+custom_minimum_size = Vector2(17, 17)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource("StyleBoxFlat_ldaoi")
+text = "0$"
+horizontal_alignment = 1
+vertical_alignment = 1
