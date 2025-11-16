@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bnwk7ohkqiwye"]
+[gd_scene load_steps=3 format=3 uid="uid://bnwk7ohkqiwye"]
 
 [ext_resource type="PackedScene" uid="uid://djkm75sn2env" path="res://Scenes/base_card.tscn" id="1_78yvq"]
+[ext_resource type="Texture2D" uid="uid://gpojmpmqfjxg" path="res://Assets/Card Images/market_art.jpg" id="2_hoeaa"]
 
 [node name="Market" instance=ExtResource("1_78yvq")]
 anchors_preset = 0
@@ -9,3 +10,12 @@ actions = 1
 buys = 1
 money = 1
 cost = 5
+
+[node name="CardName" parent="VBoxContainer" index="0"]
+text = "Market"
+
+[node name="TextureRect" parent="VBoxContainer/MarginContainer" index="0"]
+texture = ExtResource("2_hoeaa")
+
+[node name="CardCost" parent="." index="1"]
+text = "5$"
