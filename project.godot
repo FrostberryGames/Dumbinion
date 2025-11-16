@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="dumbinion"
+run/main_scene="uid://b6ayxe6afwmkd"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -23,3 +24,4 @@ version_control/autoload_on_startup=true
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+environment/defaults/default_clear_color=Color(0.19793725, 0.19793722, 0.19793722, 1)
