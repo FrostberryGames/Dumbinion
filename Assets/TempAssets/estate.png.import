@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d0l4irkr30xqj"
-path="res://.godot/imported/duchy.png-990a7089ee25eee21538008d7eeb69db.ctex"
+uid="uid://bw5cxc3pdw830"
+path="res://.godot/imported/estate.png-7f109450b7677b02bd99519b1b1b248c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://AssetsButLikeWithADifferentNameIncaseYouAlreadyHaveAnAssetsFolder/duchy.png"
-dest_files=["res://.godot/imported/duchy.png-990a7089ee25eee21538008d7eeb69db.ctex"]
+source_file="res://Assets/TempAssets/estate.png"
+dest_files=["res://.godot/imported/estate.png-7f109450b7677b02bd99519b1b1b248c.ctex"]
 
 [params]
 

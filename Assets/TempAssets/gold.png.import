@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://5ea4dnd1bahv"
-path="res://.godot/imported/province.png-3577d9106ba599793d382a8afc24d5d1.ctex"
+uid="uid://cu6c2hd4dqdyf"
+path="res://.godot/imported/gold.png-4e84a8578b141d44e5235393f526754a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://AssetsButLikeWithADifferentNameIncaseYouAlreadyHaveAnAssetsFolder/province.png"
-dest_files=["res://.godot/imported/province.png-3577d9106ba599793d382a8afc24d5d1.ctex"]
+source_file="res://Assets/TempAssets/gold.png"
+dest_files=["res://.godot/imported/gold.png-4e84a8578b141d44e5235393f526754a.ctex"]
 
 [params]
 

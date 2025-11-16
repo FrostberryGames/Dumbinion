@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b3wnpqv6eu3hp"
-path="res://.godot/imported/curse.png-5942c43d1928a2191c0cd81a6d94f157.ctex"
+uid="uid://c8wg0a4tcnve6"
+path="res://.godot/imported/TempCard.png-640fd5e0a66a026606f902261eee71e3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://AssetsButLikeWithADifferentNameIncaseYouAlreadyHaveAnAssetsFolder/curse.png"
-dest_files=["res://.godot/imported/curse.png-5942c43d1928a2191c0cd81a6d94f157.ctex"]
+source_file="res://Assets/TempAssets/TempCard.png"
+dest_files=["res://.godot/imported/TempCard.png-640fd5e0a66a026606f902261eee71e3.ctex"]
 
 [params]
 

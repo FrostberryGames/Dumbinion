@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ds5bbdk37cjop"
-path="res://.godot/imported/silver.png-7c17d93c3f993e21336b57b4602c2dff.ctex"
+uid="uid://d0l4irkr30xqj"
+path="res://.godot/imported/duchy.png-0e9204613a93fb1df581212e76c1c06d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://AssetsButLikeWithADifferentNameIncaseYouAlreadyHaveAnAssetsFolder/silver.png"
-dest_files=["res://.godot/imported/silver.png-7c17d93c3f993e21336b57b4602c2dff.ctex"]
+source_file="res://Assets/TempAssets/duchy.png"
+dest_files=["res://.godot/imported/duchy.png-0e9204613a93fb1df581212e76c1c06d.ctex"]
 
 [params]
 
