@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://chky7xt8r3pj8"]
+
+[node name="MainMenu" type="VBoxContainer"]
+anchors_preset = -1
+anchor_left = 0.34765625
+anchor_right = 0.65234375
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 57
+text = "DUMBINION"
+
+[node name="LineEdit" type="LineEdit" parent="."]
+layout_mode = 2
+placeholder_text = "Username Here:"
+
+[node name="HostButton" type="Button" parent="."]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Host Table"
+
+[node name="JoinButton" type="Button" parent="."]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Join Table"
