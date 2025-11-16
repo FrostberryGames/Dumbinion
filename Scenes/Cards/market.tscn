@@ -5,6 +5,7 @@
 
 [node name="Market" instance=ExtResource("1_78yvq")]
 anchors_preset = 0
+grow_horizontal = 1
 cards = 1
 actions = 1
 buys = 1
@@ -16,6 +17,9 @@ text = "Market"
 
 [node name="TextureRect" parent="VBoxContainer/MarginContainer" index="0"]
 texture = ExtResource("2_hoeaa")
+
+[node name="CardDesc" parent="VBoxContainer" index="3"]
+text = ""
 
 [node name="CardCost" parent="." index="1"]
 text = "5$"
