@@ -6,9 +6,11 @@ extends PanelContainer
 @export var buys:int
 @export var money:int
 @export var cost:int
+@export var cardDesc:String
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	$VBoxContainer/CardDesc.text = cardDesc
 	$CardCost.text = str(cost)+"$"
 	var effects = ""
 	if cards:
