@@ -102,9 +102,22 @@ offset_left = 589.0
 offset_top = 6.0
 offset_right = 677.0
 offset_bottom = 46.0
+theme_override_constants/separation = 20
 
-[node name="Item" type="Label" parent="Piles/HBoxContainer"]
+[node name="FullDeck" type="Label" parent="Piles/HBoxContainer"]
 layout_mode = 2
 text = "FULL DECK:"
+
+[node name="CurrentDeck" type="Label" parent="Piles/HBoxContainer"]
+layout_mode = 2
+text = "CURRENT DECK:"
+
+[node name="Hand" type="Label" parent="Piles/HBoxContainer"]
+layout_mode = 2
+text = "HAND:"
+
+[node name="Discard" type="Label" parent="Piles/HBoxContainer"]
+layout_mode = 2
+text = "DISCARD PILE:"
 
 [connection signal="pressed" from="StartGame" to="." method="_init_game"]
