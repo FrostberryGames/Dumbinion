@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://bnwk7ohkqiwye" path="res://Scenes/Cards/market.tscn" id="11_rku1e"]
 [ext_resource type="Script" uid="uid://diclwmu50jjfp" path="res://Scripts/discard_pile_container.gd" id="12_rku1e"]
 [ext_resource type="Script" uid="uid://do7w2rnctux1w" path="res://Scripts/deck_container.gd" id="13_rfjv2"]
-[ext_resource type="Script" uid="uid://bs3nreylb2ex0" path="res://Scenes/hand_container.gd" id="14_1phco"]
+[ext_resource type="Script" uid="uid://bs3nreylb2ex0" path="res://hand_container.gd" id="14_1phco"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v158k"]
 bg_color = Color(0, 0, 0, 0.28235295)
