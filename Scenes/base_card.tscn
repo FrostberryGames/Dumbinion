@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://djkm75sn2env"]
+[gd_scene load_steps=11 format=3 uid="uid://djkm75sn2env"]
 
 [ext_resource type="Script" uid="uid://bu6iy7ksdg3sq" path="res://Scripts/base_card.gd" id="1_ldaoi"]
 [ext_resource type="Texture2D" uid="uid://dd8gcp0j5jxe4" path="res://Assets/Placeholder texture.png" id="2_3i23m"]
+[ext_resource type="Texture2D" uid="uid://bqovodko3njwm" path="res://Assets/Plus Button.png" id="3_3i23m"]
+[ext_resource type="Texture2D" uid="uid://drxaycrknqrxh" path="res://Assets/card back red.png" id="4_oxmb4"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ueoly"]
 bg_color = Color(0, 0, 0, 1)
@@ -15,17 +17,52 @@ corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 corner_detail = 10
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oxmb4"]
+bg_color = Color(0.16399984, 0, 0.82, 0.32156864)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3taen"]
+bg_color = Color(0.13261992, 0, 0.69187933, 0.54509807)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3i23m"]
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ldaoi"]
 bg_color = Color(0.77, 0.7270083, 0.2541, 0.99607843)
-corner_radius_top_left = 9
-corner_radius_top_right = 9
-corner_radius_bottom_right = 9
-corner_radius_bottom_left = 9
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.2833333, 0.34, 0, 1)
+corner_radius_top_left = 11
+corner_radius_top_right = 11
+corner_radius_bottom_right = 11
+corner_radius_bottom_left = 11
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3i23m"]
+bg_color = Color(0.6, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
 
 [node name="BaseCard" type="PanelContainer"]
-offset_right = 113.0
-offset_bottom = 2.0
-grow_horizontal = 2
+custom_minimum_size = Vector2(150, 0)
+anchors_preset = -1
+anchor_right = 0.117000006
+offset_right = 0.23999023
+offset_bottom = 171.0
 size_flags_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_ueoly")
 script = ExtResource("1_ldaoi")
@@ -40,7 +77,7 @@ text = "Base Card"
 horizontal_alignment = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
-custom_minimum_size = Vector2(0, 98.917)
+custom_minimum_size = Vector2(0, 142.198)
 layout_mode = 2
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 0
@@ -68,13 +105,45 @@ text = "Place Holder card description"
 horizontal_alignment = 1
 autowrap_mode = 2
 
+[node name="Button" type="Button" parent="."]
+visible = false
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_oxmb4")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_3taen")
+theme_override_styles/hover = SubResource("StyleBoxFlat_3taen")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_3i23m")
+icon = ExtResource("3_3i23m")
+expand_icon = true
+
 [node name="CardCost" type="Label" parent="."]
-custom_minimum_size = Vector2(17, 17)
+custom_minimum_size = Vector2(23, 23)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
-theme_override_font_sizes/font_size = 12
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 18
 theme_override_styles/normal = SubResource("StyleBoxFlat_ldaoi")
 text = "0$"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="BackOfCard" type="TextureRect" parent="."]
+visible = false
+layout_mode = 2
+texture = ExtResource("4_oxmb4")
+expand_mode = 5
+
+[node name="Quantity" type="Label" parent="."]
+visible = false
+custom_minimum_size = Vector2(26, 25)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_3i23m")
+text = "10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
