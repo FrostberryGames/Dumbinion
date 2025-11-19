@@ -13,8 +13,12 @@ func _on_sort_children() -> void:
 	var spacing:int
 	var i = 0;
 	for c in get_children():
+		if(get_child_count()==1):
+			spacing = size.x-c.size.x
+			i=1
 		if(!spacing):
 			spacing=(size.x-c.size.x)/(get_child_count()-1)
-		fit_child_in_rect(c,Rect2(Vector2(spacing*i,0),c.get_transform().get_scale()))
+		fit_child_in_rect(c,Rect2(Vector2(spacing*i,(size.y-c.size.y)/2),c.get_transform().get_scale()))
+		c.hide_info()
 		c.hide_card()
 		i+=1

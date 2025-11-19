@@ -1,6 +1,7 @@
-[gd_scene load_steps=24 format=3 uid="uid://da350s8wlnwoi"]
+[gd_scene load_steps=27 format=3 uid="uid://da350s8wlnwoi"]
 
 [ext_resource type="Shader" uid="uid://lopds28d3gwy" path="res://Shaders/Background.gdshader" id="1_ebmjs"]
+[ext_resource type="Script" uid="uid://cel5i8ui41jxw" path="res://Scripts/game.gd" id="1_nnt18"]
 [ext_resource type="Texture2D" uid="uid://5ea4dnd1bahv" path="res://Assets/TempAssets/province.png" id="2_1l0tm"]
 [ext_resource type="Texture2D" uid="uid://cu6c2hd4dqdyf" path="res://Assets/TempAssets/gold.png" id="2_qxrlw"]
 [ext_resource type="Texture2D" uid="uid://d0l4irkr30xqj" path="res://Assets/TempAssets/duchy.png" id="4_v158k"]
@@ -12,8 +13,10 @@
 [ext_resource type="Script" uid="uid://d0hkwt6yklfyt" path="res://Scripts/kingdom.gd" id="10_o5yvi"]
 [ext_resource type="PackedScene" uid="uid://bnwk7ohkqiwye" path="res://Scenes/Cards/market.tscn" id="11_rku1e"]
 [ext_resource type="Script" uid="uid://diclwmu50jjfp" path="res://Scripts/discard_pile_container.gd" id="12_rku1e"]
+[ext_resource type="Script" uid="uid://dv10xemhvbe1u" path="res://Scripts/player_side.gd" id="13_ewbju"]
 [ext_resource type="Script" uid="uid://do7w2rnctux1w" path="res://Scripts/deck_container.gd" id="13_rfjv2"]
-[ext_resource type="Script" uid="uid://bs3nreylb2ex0" path="res://hand_container.gd" id="14_1phco"]
+[ext_resource type="Script" uid="uid://bs3nreylb2ex0" path="res://Scripts/hand_container.gd" id="14_1phco"]
+[ext_resource type="PackedScene" uid="uid://djkm75sn2env" path="res://Scenes/base_card.tscn" id="16_ewbju"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v158k"]
 bg_color = Color(0, 0, 0, 0.28235295)
@@ -58,6 +61,7 @@ corner_radius_bottom_left = 20
 content_margin_right = 47.0
 
 [node name="Game" type="Node"]
+script = ExtResource("1_nnt18")
 
 [node name="Card" type="TextureButton" parent="."]
 visible = false
@@ -189,7 +193,7 @@ layout_mode = 1
 anchors_preset = -1
 anchor_top = 0.165
 anchor_right = 1.0
-anchor_bottom = 0.6236111
+anchor_bottom = 0.6009259
 offset_left = 20.0
 offset_top = 0.19999695
 offset_right = -30.0
@@ -477,12 +481,13 @@ anchor_top = 0.67200005
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 29.0
-offset_top = 0.15997314
+offset_top = 16.23993
 offset_right = -17.0
 offset_bottom = -12.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/separation = 20
+script = ExtResource("13_ewbju")
 
 [node name="Discard" type="PanelContainer" parent="PlayerUI/PlayerSide"]
 layout_mode = 2
@@ -530,22 +535,7 @@ script = ExtResource("13_rfjv2")
 [node name="Market" parent="PlayerUI/PlayerSide/Deck/Margin/DeckContainer" instance=ExtResource("11_rku1e")]
 layout_mode = 2
 
-[node name="Market3" parent="PlayerUI/PlayerSide/Deck/Margin/DeckContainer" instance=ExtResource("11_rku1e")]
-layout_mode = 2
-
-[node name="Market4" parent="PlayerUI/PlayerSide/Deck/Margin/DeckContainer" instance=ExtResource("11_rku1e")]
-layout_mode = 2
-
-[node name="Market5" parent="PlayerUI/PlayerSide/Deck/Margin/DeckContainer" instance=ExtResource("11_rku1e")]
-layout_mode = 2
-
-[node name="Market6" parent="PlayerUI/PlayerSide/Deck/Margin/DeckContainer" instance=ExtResource("11_rku1e")]
-layout_mode = 2
-
-[node name="Market7" parent="PlayerUI/PlayerSide/Deck/Margin/DeckContainer" instance=ExtResource("11_rku1e")]
-layout_mode = 2
-
-[node name="Market2" parent="PlayerUI/PlayerSide/Deck/Margin/DeckContainer" instance=ExtResource("11_rku1e")]
+[node name="BaseCard" parent="PlayerUI/PlayerSide/Deck/Margin/DeckContainer" instance=ExtResource("16_ewbju")]
 layout_mode = 2
 
 [node name="Count" type="Label" parent="PlayerUI/PlayerSide/Deck/Margin"]
@@ -593,6 +583,22 @@ layout_mode = 2
 [node name="Market5" parent="PlayerUI/PlayerSide/Hand/Margin/HandContainer" instance=ExtResource("11_rku1e")]
 layout_mode = 2
 
+[node name="Alert" type="Label" parent="PlayerUI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.59800005
+anchor_right = 1.0
+anchor_bottom = 0.683
+offset_top = 0.15997314
+offset_bottom = 0.35998535
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
+text = "Alert"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [connection signal="sort_children" from="PlayerUI/PlayerSide/Discard/Margin/DiscardPileContainer" to="PlayerUI/PlayerSide/Discard/Margin/DiscardPileContainer" method="_on_sort_children"]
 [connection signal="sort_children" from="PlayerUI/PlayerSide/Deck/Margin/DeckContainer" to="PlayerUI/PlayerSide/Deck/Margin/DeckContainer" method="_on_sort_children"]
+[connection signal="child_order_changed" from="PlayerUI/PlayerSide/Hand/Margin/HandContainer" to="PlayerUI/PlayerSide/Hand/Margin/HandContainer" method="_on_child_order_changed"]
 [connection signal="sort_children" from="PlayerUI/PlayerSide/Hand/Margin/HandContainer" to="PlayerUI/PlayerSide/Hand/Margin/HandContainer" method="_on_sort_children"]

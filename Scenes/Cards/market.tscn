@@ -4,7 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://gpojmpmqfjxg" path="res://Assets/Card Images/market_art.jpg" id="2_hoeaa"]
 
 [node name="Market" instance=ExtResource("1_78yvq")]
-grow_horizontal = 1
 cards = 1
 actions = 1
 buys = 1
@@ -20,5 +19,5 @@ texture = ExtResource("2_hoeaa")
 [node name="CardDesc" parent="VBoxContainer" index="3"]
 text = ""
 
-[node name="CardCost" parent="." index="1"]
+[node name="CardCost" parent="." index="2"]
 text = "5$"

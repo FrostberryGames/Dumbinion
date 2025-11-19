@@ -108,6 +108,7 @@ autowrap_mode = 2
 [node name="Button" type="Button" parent="."]
 visible = false
 layout_mode = 2
+mouse_filter = 1
 mouse_default_cursor_shape = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_oxmb4")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_3taen")
