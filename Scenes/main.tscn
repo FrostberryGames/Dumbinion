@@ -1,6 +1,23 @@
-[gd_scene load_steps=2 format=3 uid="uid://b6ayxe6afwmkd"]
+[gd_scene load_steps=6 format=3 uid="uid://b6ayxe6afwmkd"]
 
 [ext_resource type="Script" uid="uid://cgebrxvjv6mfw" path="res://Scripts/main.gd" id="1_jjgbg"]
+[ext_resource type="PackedScene" uid="uid://da350s8wlnwoi" path="res://Scenes/game.tscn" id="2_8gbba"]
+[ext_resource type="PackedScene" uid="uid://c3io4nvw2ehl1" path="res://Scenes/user_panel.tscn" id="2_jjvhh"]
+[ext_resource type="PackedScene" uid="uid://chky7xt8r3pj8" path="res://Scenes/main_menu.tscn" id="3_jjvhh"]
+[ext_resource type="PackedScene" uid="uid://bhy12mj0n6gvr" path="res://Scenes/lobby.tscn" id="5_kry3j"]
 
 [node name="main" type="Node"]
 script = ExtResource("1_jjgbg")
+user_plate = ExtResource("2_jjvhh")
+
+[node name="Game" parent="." instance=ExtResource("2_8gbba")]
+visible = false
+
+[node name="MainMenu" parent="." instance=ExtResource("3_jjvhh")]
+
+[node name="Lobby" parent="." instance=ExtResource("5_kry3j")]
+visible = false
+
+[connection signal="turn_finished" from="Game" to="." method="_on_game_turn_finished"]
+[connection signal="host_game" from="MainMenu" to="." method="_on_main_menu_host_game"]
+[connection signal="join_game" from="MainMenu" to="." method="_on_main_menu_join_game"]

@@ -39,15 +39,16 @@ shader_parameter/wave_size = 1.518000024605
 shader_parameter/wave_time_mul = 0.51500002120262
 shader_parameter/total_phases = 6
 
-[sub_resource type="LabelSettings" id="LabelSettings_2poj3"]
+[sub_resource type="LabelSettings" id="LabelSettings_ebmjs"]
+font_size = 40
 font_color = Color(0.91764706, 0.9372549, 0.9372549, 1)
 
-[sub_resource type="LabelSettings" id="LabelSettings_ebmjs"]
-font_size = 30
-font_color = Color(0.91764706, 0.9372549, 0.9372549, 1)
+[sub_resource type="LabelSettings" id="LabelSettings_ewbju"]
+font_size = 36
+font_color = Color(0.81, 0.49032, 0.21059999, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_qxrlw"]
-font_size = 12
+font_size = 20
 font_color = Color(0.91764706, 0.9372549, 0.9372549, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h4fw4"]
@@ -60,11 +61,18 @@ corner_radius_bottom_left = 20
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rfjv2"]
 content_margin_right = 47.0
 
-[node name="Game" type="Node"]
+[node name="Game" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_nnt18")
 
 [node name="Card" type="TextureButton" parent="."]
 visible = false
+layout_mode = 0
 offset_left = 180.0
 offset_top = 129.0
 offset_right = 330.0
@@ -100,7 +108,7 @@ label_settings = SubResource("LabelSettings_ldgsr")
 horizontal_alignment = 2
 
 [node name="PlayerUI" type="Control" parent="."]
-layout_mode = 3
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -116,7 +124,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Scoreboard" type="VBoxContainer" parent="PlayerUI"]
+[node name="Scoreboard" type="GridContainer" parent="PlayerUI"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 1.0
@@ -126,24 +134,8 @@ offset_top = 10.0
 offset_right = -10.0
 offset_bottom = 77.0
 grow_horizontal = 0
-
-[node name="P1" type="Label" parent="PlayerUI/Scoreboard"]
-layout_mode = 2
-text = "Frostberry (You) - 72"
-label_settings = SubResource("LabelSettings_2poj3")
-horizontal_alignment = 2
-
-[node name="P2" type="Label" parent="PlayerUI/Scoreboard"]
-layout_mode = 2
-text = "Wong_Tong - 48"
-label_settings = SubResource("LabelSettings_2poj3")
-horizontal_alignment = 2
-
-[node name="P3" type="Label" parent="PlayerUI/Scoreboard"]
-layout_mode = 2
-text = "Karhma - 2"
-label_settings = SubResource("LabelSettings_2poj3")
-horizontal_alignment = 2
+theme_override_constants/h_separation = 10
+columns = 2
 
 [node name="TurnInfo" type="Control" parent="PlayerUI"]
 layout_mode = 1
@@ -173,12 +165,10 @@ label_settings = SubResource("LabelSettings_ebmjs")
 horizontal_alignment = 1
 uppercase = true
 
-[node name="PhaseInfo" type="RichTextLabel" parent="PlayerUI/TurnInfo/VBoxContainer"]
+[node name="PhaseText" type="Label" parent="PlayerUI/TurnInfo/VBoxContainer"]
 layout_mode = 2
-bbcode_enabled = true
-text = "[color=#FA824C]Action Phase [/color][color=EAEFEF]> Buying Phase [/color]
-"
-fit_content = true
+text = "Action Phase"
+label_settings = SubResource("LabelSettings_ewbju")
 horizontal_alignment = 1
 
 [node name="ResourcesInfo" type="Label" parent="PlayerUI/TurnInfo/VBoxContainer"]
@@ -187,6 +177,15 @@ text = "0 Actions, 0 buys, 0 coins"
 label_settings = SubResource("LabelSettings_qxrlw")
 horizontal_alignment = 1
 uppercase = true
+
+[node name="PhaseEndButton" type="Button" parent="PlayerUI"]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 24.0
+offset_right = 307.0
+offset_bottom = 122.0
+theme_override_font_sizes/font_size = 21
+text = "End Phase"
 
 [node name="Field" type="HBoxContainer" parent="PlayerUI"]
 layout_mode = 1
@@ -474,6 +473,10 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
+[node name="GridContainer" type="GridContainer" parent="PlayerUI/Field/Play/Margin"]
+layout_mode = 2
+columns = 2
+
 [node name="PlayerSide" type="HBoxContainer" parent="PlayerUI"]
 layout_mode = 1
 anchors_preset = -1
@@ -598,6 +601,7 @@ text = "Alert"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[connection signal="pressed" from="PlayerUI/PhaseEndButton" to="." method="_on_phase_end_button_pressed"]
 [connection signal="sort_children" from="PlayerUI/PlayerSide/Discard/Margin/DiscardPileContainer" to="PlayerUI/PlayerSide/Discard/Margin/DiscardPileContainer" method="_on_sort_children"]
 [connection signal="sort_children" from="PlayerUI/PlayerSide/Deck/Margin/DeckContainer" to="PlayerUI/PlayerSide/Deck/Margin/DeckContainer" method="_on_sort_children"]
 [connection signal="child_order_changed" from="PlayerUI/PlayerSide/Hand/Margin/HandContainer" to="PlayerUI/PlayerSide/Hand/Margin/HandContainer" method="_on_child_order_changed"]

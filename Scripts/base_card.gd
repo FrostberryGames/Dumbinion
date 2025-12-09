@@ -1,4 +1,7 @@
 extends PanelContainer
+class_name BaseCard
+
+
 
 signal card_selected
 @export var actionName:String
@@ -8,6 +11,7 @@ signal card_selected
 @export var money:int
 @export var cost:int
 @export var cardDesc:String
+@export var cardKeywords:String
 var quantity = 10
 var disabled = false
 
@@ -22,6 +26,7 @@ func hide_card():
 func show_card():
 	$BackOfCard.hide()
 		
+@rpc("any_peer","call_local","reliable")
 func decrease_quantity():
 	quantity-=1
 	$Quantity.text=str(quantity)
@@ -32,6 +37,9 @@ func decrease_quantity():
 
 func show_quantity():
 	$Quantity.show()
+	
+func hide_quantity():
+	$Quantity.hide()
 	
 func unprompt_select():
 	$Button.hide()

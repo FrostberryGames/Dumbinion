@@ -1,0 +1,45 @@
+[gd_scene load_steps=3 format=3 uid="uid://c3io4nvw2ehl1"]
+
+[ext_resource type="Script" uid="uid://dan0qua8vrlc8" path="res://Scripts/user_panel.gd" id="1_72tqj"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2u721"]
+bg_color = Color(0, 0, 0, 0.5254902)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_left = 3.0
+expand_margin_right = 3.0
+
+[node name="UserPanel" type="PanelContainer"]
+custom_minimum_size = Vector2(270, 75)
+anchors_preset = -1
+anchor_right = 0.12552084
+anchor_bottom = 0.06851852
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_2u721")
+script = ExtResource("1_72tqj")
+metadata/_edit_use_anchors_ = true
+
+[node name="Username" type="Label" parent="."]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 30
+text = "Byte-Facto"
+horizontal_alignment = 2
+
+[node name="VPs" type="Label" parent="."]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0, 0.7775667, 0.81776404, 1)
+theme_override_font_sizes/font_size = 30
+text = "0 VP"
+
+[node name="Ready" type="Label" parent="."]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 21
+text = "Not Ready"
+horizontal_alignment = 2

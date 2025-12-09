@@ -1,9 +1,14 @@
 extends PanelContainer
 
 @export var cards: Array[PackedScene]
-signal card_pressed(card:PanelContainer)
 var cur_card:PanelContainer = null
 var info_showing = false
+var prompt_callback:Callable
+
+func card_pressed(card:BaseCard):
+	unprompt_select()
+	card.decrease_quantity.rpc()
+	prompt_callback.call(card)
 
 func mouse_entered_card(card:PanelContainer):
 	cur_card=card
@@ -12,7 +17,8 @@ func mouse_exited_card():
 	hide_card_info()
 	cur_card=null
 
-func prompt_select(cost:int=9999):
+func prompt_select(callback,cost:int=9999):
+	prompt_callback = callback
 	for i in $Margin/Grid.get_children():
 		if i.cost <= cost:
 			i.prompt_select()
@@ -26,7 +32,7 @@ func generate_kingdom():
 		var card:PanelContainer = cards.pick_random().instantiate()
 		card.name = "card"+str(i)
 		card.mouse_entered.connect(mouse_entered_card.bind(card))
-		card.card_selected.connect(card_pressed.emit.bind(card))
+		card.card_selected.connect(card_pressed.bind(card))
 		card.mouse_exited.connect(mouse_exited_card)
 		$Margin/Grid.add_child(card)
 		card.show_quantity()

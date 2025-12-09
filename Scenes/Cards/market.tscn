@@ -9,6 +9,7 @@ actions = 1
 buys = 1
 money = 1
 cost = 5
+cardKeywords = "action"
 
 [node name="CardName" parent="VBoxContainer" index="0"]
 text = "Market"

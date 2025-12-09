@@ -5,7 +5,6 @@ extends Container
 func _ready() -> void:
 	pass # Replace with function body.
 
-
 func _on_sort_children() -> void:
 	var spacing=0
 	for c in get_children():
