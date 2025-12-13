@@ -8,19 +8,15 @@ func _ready() -> void:
 func get_child_position(card):
 	var spacing=0
 	for c in get_children():
-		if(spacing==0):
-			custom_minimum_size.x = c.size.x
 		if c==card:
-			return Vector2(0,spacing)+global_position
-		spacing+=2
+			return Vector2(spacing/4*120,spacing%4*80+spacing/4%2*30) + global_position
+		spacing+=1
 
 func _on_sort_children() -> void:
 	var spacing=0
 	for c in get_children():
-		c.hide_info()
 		if c.moving:
 			continue
-		if(spacing==0):
-			custom_minimum_size.x = c.size.x
-		fit_child_in_rect(c,Rect2(Vector2(0,spacing),c.get_transform().get_scale()))
-		spacing+=2
+		fit_child_in_rect(c,Rect2(Vector2(spacing/4*120,spacing%4*80+spacing/4%2*30),c.get_transform().get_scale()))
+		spacing+=1
+		c.hide_info()

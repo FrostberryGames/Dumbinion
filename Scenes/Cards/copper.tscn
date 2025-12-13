@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dmigkdj3cdtjl"]
+
+[ext_resource type="PackedScene" uid="uid://djkm75sn2env" path="res://Scenes/base_card.tscn" id="1_yx73y"]
+[ext_resource type="Texture2D" uid="uid://b2vxiynocjwa7" path="res://Assets/TempAssets/copper.png" id="2_21fm1"]
+
+[node name="Copper" instance=ExtResource("1_yx73y")]
+money = 1
+cardKeywords = "treasure"
+quantity = 40
+
+[node name="CardName" parent="VBoxContainer" index="0"]
+text = "Copper"
+
+[node name="TextureRect" parent="VBoxContainer/MarginContainer" index="0"]
+texture = ExtResource("2_21fm1")

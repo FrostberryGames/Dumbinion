@@ -12,8 +12,9 @@ signal card_selected
 @export var cost:int
 @export var cardDesc:String
 @export var cardKeywords:String
-var quantity = 10
+@export var quantity = 10
 var disabled = false
+var moving = false
 
 func prompt_select():
 	if(disabled):
@@ -71,6 +72,8 @@ func hide_info():
 	$VBoxContainer/CardEffects.hide()
 	
 func show_info():
+	if "treasure" in cardKeywords or "victory" in cardKeywords:
+		return
 	if($VBoxContainer/CardDesc.text):
 		$VBoxContainer/CardDesc.show()
 	if($VBoxContainer/CardEffects.text):
@@ -79,3 +82,21 @@ func show_info():
 
 func _on_button_pressed() -> void:
 	card_selected.emit()
+
+func finish_reparent():
+	moving=false
+	if get_parent() is Container:
+		get_parent().sort_children.emit()
+
+func reparent_and_move(destination):
+	moving=true
+	reparent(destination)
+	await get_tree().create_timer(0.01).timeout
+	if(get_parent()!=destination):
+		return
+	var tween:Tween=get_tree().create_tween()
+	var position_end = destination.get_child_position(self)
+	var duration_in_seconds = 0.5
+	tween.set_ease(Tween.EASE_OUT)
+	tween.tween_property(self, "global_position", position_end, duration_in_seconds).set_trans(Tween.TRANS_CUBIC)
+	tween.tween_callback(finish_reparent) # wait until move animation is complete

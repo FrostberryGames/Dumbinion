@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://b4s0fydb88sat"]
+
+[ext_resource type="PackedScene" uid="uid://djkm75sn2env" path="res://Scenes/base_card.tscn" id="1_hdrch"]
+[ext_resource type="Texture2D" uid="uid://bw5cxc3pdw830" path="res://Assets/TempAssets/estate.png" id="2_rympu"]
+
+[node name="Estate" instance=ExtResource("1_hdrch")]
+actions = 1
+cost = 2
+cardKeywords = "victory"
+quantity = 12
+
+[node name="CardName" parent="VBoxContainer" index="0"]
+text = "Estate"
+
+[node name="TextureRect" parent="VBoxContainer/MarginContainer" index="0"]
+texture = ExtResource("2_rympu")

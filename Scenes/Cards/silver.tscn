@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://brwr5df5hvwcn"]
+
+[ext_resource type="PackedScene" uid="uid://djkm75sn2env" path="res://Scenes/base_card.tscn" id="1_rarc6"]
+[ext_resource type="Texture2D" uid="uid://ds5bbdk37cjop" path="res://Assets/TempAssets/silver.png" id="2_rarc6"]
+
+[node name="Silver" instance=ExtResource("1_rarc6")]
+money = 2
+cost = 3
+cardKeywords = "treasure"
+quantity = 40
+
+[node name="CardName" parent="VBoxContainer" index="0"]
+text = "Silver"
+
+[node name="TextureRect" parent="VBoxContainer/MarginContainer" index="0"]
+texture = ExtResource("2_rarc6")

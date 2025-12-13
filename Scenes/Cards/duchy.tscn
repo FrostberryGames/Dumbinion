@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://c0n0ncdo1ptwj"]
+
+[ext_resource type="PackedScene" uid="uid://djkm75sn2env" path="res://Scenes/base_card.tscn" id="1_ciqvr"]
+[ext_resource type="Texture2D" uid="uid://d0l4irkr30xqj" path="res://Assets/TempAssets/duchy.png" id="2_ciqvr"]
+
+[node name="Duchy" instance=ExtResource("1_ciqvr")]
+actions = 3
+cost = 5
+cardKeywords = "victory"
+quantity = 12
+
+[node name="CardName" parent="VBoxContainer" index="0"]
+text = "Duchy"
+
+[node name="TextureRect" parent="VBoxContainer/MarginContainer" index="0"]
+texture = ExtResource("2_ciqvr")

@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cyt60dbvhw8yr"]
+
+[ext_resource type="PackedScene" uid="uid://djkm75sn2env" path="res://Scenes/base_card.tscn" id="1_j5x6d"]
+[ext_resource type="Texture2D" uid="uid://5ea4dnd1bahv" path="res://Assets/TempAssets/province.png" id="2_j5x6d"]
+
+[node name="Province" instance=ExtResource("1_j5x6d")]
+actions = 6
+cost = 8
+cardKeywords = "victory"
+quantity = 12
+
+[node name="CardName" parent="VBoxContainer" index="0"]
+text = "Province"
+
+[node name="TextureRect" parent="VBoxContainer/MarginContainer" index="0"]
+texture = ExtResource("2_j5x6d")

@@ -10,7 +10,8 @@ var card_callback=null
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	shuffle_discard()
+	draw_cards(5)
 	
 func disconector(card):
 	unprompt_cards_from_hand()
@@ -37,26 +38,34 @@ func prompt_cards_from_hand(callback,filter:Callable=placeholder):
 	return not empty
 	
 func add_card_to_hand(card):
-	card.reparent(hand)
+	card.reparent_and_move(hand)
 	
 func discard_card(card:BaseCard=null):
+	unprompt_cards_from_hand()
 	if !card:
 		for c in hand.get_children():
-			c.reparent(discard)
+			c.reparent_and_move(discard)
 		return
 	if card.get_parent():
-		card.reparent(discard)
+		card.reparent_and_move(discard)
 	else:
 		discard.add_child(card)
 	
 func top_deck(card):
-	card.reparent(deck)
+	card.reparent_and_move(deck)
 	
 func shuffle_discard():
 	var cards = discard.get_children()
 	cards.shuffle()
 	for c in cards:
-		c.reparent(deck)
+		c.reparent_and_move(deck)
+	
+func count_vp():
+	var vps = 0
+	for card:BaseCard in $Hand/Margin/HandContainer.get_children() + $Deck/Margin/DeckContainer.get_children() + $Discard/Margin/DiscardPileContainer.get_children():
+		if "victory" in card.cardKeywords:
+			vps+=card.actions
+	return vps
 	
 func draw_cards(num):
 	if num<=0:
@@ -64,7 +73,7 @@ func draw_cards(num):
 	var list =deck.get_children()
 	list.reverse()
 	for c in list:
-		c.reparent(hand)
+		c.reparent_and_move(hand)
 		num-=1
 		if num ==0:
 			break

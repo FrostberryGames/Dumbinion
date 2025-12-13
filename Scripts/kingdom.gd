@@ -1,9 +1,9 @@
-extends PanelContainer
+extends HBoxContainer
 
-@export var cards: Array[PackedScene]
 var cur_card:PanelContainer = null
 var info_showing = false
 var prompt_callback:Callable
+var prompted = false
 
 func card_pressed(card:BaseCard):
 	unprompt_select()
@@ -17,24 +17,35 @@ func mouse_exited_card():
 	hide_card_info()
 	cur_card=null
 
+func get_all_children():
+	return $Kingdom/Margin/Grid.get_children() + $Resources/Margin/ScrollContainer/Grid.get_children()
+
 func prompt_select(callback,cost:int=9999):
 	prompt_callback = callback
-	for i in $Margin/Grid.get_children():
+	if prompted:
+		unprompt_select()
+	for i in get_all_children():
 		if i.cost <= cost:
 			i.prompt_select()
+			prompted=true
 			
 func unprompt_select():
-	for i in $Margin/Grid.get_children():
+	prompted=false
+	for i in get_all_children():
 		i.unprompt_select()
 	
-func generate_kingdom():
-	for i in range(10):
-		var card:PanelContainer = cards.pick_random().instantiate()
-		card.name = "card"+str(i)
+
+@rpc("any_peer","call_local","reliable")
+func generate_kingdom(cards:Array):
+	var j=0
+	for i in cards:
+		var card:PanelContainer = load(i).instantiate()
+		card.name = "card"+str(j)
+		j+=1
 		card.mouse_entered.connect(mouse_entered_card.bind(card))
 		card.card_selected.connect(card_pressed.bind(card))
 		card.mouse_exited.connect(mouse_exited_card)
-		$Margin/Grid.add_child(card)
+		$Kingdom/Margin/Grid.add_child(card)
 		card.show_quantity()
 		
 		card.hide_info()
@@ -60,6 +71,7 @@ func _input(event: InputEvent) -> void:
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	generate_kingdom()
-	unprompt_select()
+	for card in $Resources/Margin/ScrollContainer/Grid.get_children():
+		card.show_quantity()
+		card.card_selected.connect(card_pressed.bind(card))
 	

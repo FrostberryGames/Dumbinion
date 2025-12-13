@@ -10,6 +10,7 @@ class Player:
 
 const PORT = 33678
 
+@export var kingdom_cards:Array[String]
 @export var user_plate:PackedScene
 var peer = ENetMultiplayerPeer.new()
 var peer_userpalate = null
@@ -39,6 +40,11 @@ func start_button_pressed():
 			return
 	players.shuffle()
 	cur_turn=-1
+	var card_list = []
+	kingdom_cards.shuffle()
+	for i in range(10):
+		card_list.append(kingdom_cards[i])
+	$Game.kingdom.generate_kingdom.rpc(card_list)
 	next_turn()
 	start_game.rpc()
 	
