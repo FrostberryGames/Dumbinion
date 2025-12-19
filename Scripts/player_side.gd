@@ -31,6 +31,7 @@ func prompt_cards_from_hand(callback,filter:Callable=placeholder):
 	var empty=true
 	for c in hand.get_children():
 		if not filter.call(c):
+			c.unprompt_select()
 			continue
 		empty=false
 		c.prompt_select()

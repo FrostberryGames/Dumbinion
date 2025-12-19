@@ -34,6 +34,8 @@ func end_turn():
 	for i in play_field.get_children():
 		i.reparent_and_move(player_side.discard)
 	update_vp(player_side.count_vp())
+	if kingdom.game_over:
+		_on_field_game_over.rpc()
 	player_side.discard_card()
 	player_side.draw_cards(5)
 	turn_finished.emit()
@@ -63,7 +65,7 @@ func clear_play_area():
 func start_turn():
 	buys=1
 	actions=1
-	dollars=0
+	dollars=10
 	phase_end_button.disabled=false
 	begin_action()
 	update_text.rpc(actions,buys,dollars)
@@ -133,6 +135,7 @@ func card_bought(card:BaseCard):
 	buys-=1
 	player_side.discard_card(take_card_from_kingdom(card))
 	if buys > 0:
+		player_side.prompt_cards_from_hand(treasure_played,card_keyword_filter.bind("treasure"))
 		kingdom.prompt_select(card_bought,dollars)
 		update_text.rpc(actions,buys,dollars)
 	else:
@@ -144,3 +147,18 @@ func _on_phase_end_button_pressed() -> void:
 		end_action_phase()
 	elif phase == "buy":
 		end_buy_phase()
+
+@rpc("any_peer","call_local","reliable")
+func _on_field_game_over() -> void:
+	var highest = 0
+	var winner = ""
+	for i in $PlayerUI/Scoreboard.get_children():
+		if i.vp > highest:
+			highest = i.vp
+			winner=i.username
+		elif i.vp == highest:
+			winner = winner+ " "+i.username
+	$WinLabel.text = winner + " WINS!"
+	for i in get_children():
+		i.hide()
+	$WinLabel.show()

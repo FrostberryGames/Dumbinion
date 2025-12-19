@@ -1,13 +1,23 @@
 extends HBoxContainer
 
+var game_over = false
 var cur_card:PanelContainer = null
 var info_showing = false
 var prompt_callback:Callable
 var prompted = false
+var empty_piles = 0
+
+@rpc("any_peer","call_local","reliable")
+func increase_empty_piles():
+	empty_piles+=1
 
 func card_pressed(card:BaseCard):
 	unprompt_select()
 	card.decrease_quantity.rpc()
+	if card.disabled:
+		increase_empty_piles.rpc()
+		if empty_piles>=3 or card.name == "Province":
+			game_over=true
 	prompt_callback.call(card)
 
 func mouse_entered_card(card:PanelContainer):

@@ -2,6 +2,7 @@ extends PanelContainer
 
 var readied = false
 var vp = 0
+var username = ""
 
 func _ready() -> void:
 	set_multiplayer_authority(int(name))
@@ -20,8 +21,9 @@ func set_vp(num):
 	vp = num
 	$VPs.text = str(num) + " VP"
 
-func set_user(username):
-	$Username.text = username
+func set_user(uname):
+	username = uname
+	$Username.text = uname
 
 @rpc("call_local","reliable")
 func ready_up():
