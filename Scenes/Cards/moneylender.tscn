@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dovkjtx1cpeh6"]
+
+[ext_resource type="PackedScene" uid="uid://djkm75sn2env" path="res://Scenes/base_card.tscn" id="1_x43bl"]
+[ext_resource type="Texture2D" uid="uid://c1sq3ua6g1uob" path="res://Assets/Card Images/induce-businessmen-discussion-business-concept-cartoon-illustration-69137846.webp" id="2_7kfw0"]
+
+[node name="Moneylender" instance=ExtResource("1_x43bl")]
+actionName = "moneylender"
+cost = 4
+cardDesc = "You may trash a Copper from your hand for +$3."
+cardKeywords = "action"
+
+[node name="CardName" parent="VBoxContainer" index="0"]
+text = "Moneylender"
+
+[node name="TextureRect" parent="VBoxContainer/MarginContainer" index="0"]
+texture = ExtResource("2_7kfw0")

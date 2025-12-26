@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://wlu563ys0gt8"]
+
+[ext_resource type="PackedScene" uid="uid://djkm75sn2env" path="res://Scenes/base_card.tscn" id="1_37byr"]
+[ext_resource type="Texture2D" uid="uid://b0otmglffamq6" path="res://Assets/Card Images/Williams Open Pit Mine_0.jpg" id="2_ioors"]
+
+[node name="Mine" instance=ExtResource("1_37byr")]
+actionName = "mine"
+cost = 5
+cardDesc = "You may trash a Treasure from your hand. Gain a Treasure to your hand costing up to $3 more than it."
+cardKeywords = "action"
+
+[node name="CardName" parent="VBoxContainer" index="0"]
+text = "Mine"
+
+[node name="TextureRect" parent="VBoxContainer/MarginContainer" index="0"]
+texture = ExtResource("2_ioors")

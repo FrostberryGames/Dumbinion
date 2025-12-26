@@ -28,12 +28,12 @@ func next_turn():
 	cur_turn+=1
 	if cur_turn>=len(players):
 		cur_turn=0
+	$Game.set_turn_name.rpc(players[cur_turn].username)
 	if players[cur_turn].id==1:
 		$Game.start_turn()
 	else:
 		$Game.start_turn.rpc_id(players[cur_turn].id)
-	$Game.set_turn_name.rpc(players[cur_turn].username)
-	
+
 func start_button_pressed():
 	for i:Node in $Lobby/UserPlateContainer.get_children():
 		if not i.readied:

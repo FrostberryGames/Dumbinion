@@ -30,6 +30,6 @@ func _on_sort_children() -> void:
 		if(!spacing):
 			width = min(size.x,(c.size.x+15)*get_child_count())
 			spacing=(width-c.size.x)/(get_child_count()-1)
-		fit_child_in_rect(c,Rect2(Vector2(spacing*i+(size.x-width)/2,10),c.get_transform().get_scale()))
+		fit_child_in_rect(c,Rect2(Vector2(spacing*i+(size.x-width)/2,-10 if c.selected else 10),c.get_transform().get_scale()))
 		i+=1
 		

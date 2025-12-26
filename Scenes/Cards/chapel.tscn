@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://ontcp48cisn1"]
+
+[ext_resource type="PackedScene" uid="uid://djkm75sn2env" path="res://Scenes/base_card.tscn" id="1_38ti1"]
+[ext_resource type="Texture2D" uid="uid://dbxl31lbmpiu4" path="res://Assets/Card Images/17_22_185_chapel.jpg" id="2_5v647"]
+
+[node name="Chapel" instance=ExtResource("1_38ti1")]
+actionName = "chapel"
+cost = 2
+cardDesc = "Trash up to 4 cards from your hand."
+cardKeywords = "action"
+
+[node name="CardName" parent="VBoxContainer" index="0"]
+text = "Chapel"
+
+[node name="TextureRect" parent="VBoxContainer/MarginContainer" index="0"]
+texture = ExtResource("2_5v647")

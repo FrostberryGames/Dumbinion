@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://b8u8udek7beyj"]
+
+[ext_resource type="PackedScene" uid="uid://djkm75sn2env" path="res://Scenes/base_card.tscn" id="1_okwl8"]
+[ext_resource type="Texture2D" uid="uid://bd0d3g37e3amf" path="res://Assets/Card Images/1200px-0_typical_smithy_in_finland.JPG" id="2_chneo"]
+
+[node name="Smithy" instance=ExtResource("1_okwl8")]
+cards = 3
+cost = 4
+cardKeywords = "action"
+
+[node name="CardName" parent="VBoxContainer" index="0"]
+text = "Smithy"
+
+[node name="TextureRect" parent="VBoxContainer/MarginContainer" index="0"]
+texture = ExtResource("2_chneo")

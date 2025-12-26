@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dc43v3l608lht"]
+
+[ext_resource type="PackedScene" uid="uid://djkm75sn2env" path="res://Scenes/base_card.tscn" id="1_5gav7"]
+[ext_resource type="Texture2D" uid="uid://dsta0roo3w78f" path="res://Assets/Card Images/image.jpg" id="2_04vat"]
+
+[node name="Festival" instance=ExtResource("1_5gav7")]
+actions = 2
+buys = 1
+money = 2
+cost = 5
+cardKeywords = "action"
+
+[node name="CardName" parent="VBoxContainer" index="0"]
+text = "Festival"
+
+[node name="TextureRect" parent="VBoxContainer/MarginContainer" index="0"]
+texture = ExtResource("2_04vat")

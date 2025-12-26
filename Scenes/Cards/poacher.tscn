@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://djep6r0oj8plw"]
+
+[ext_resource type="PackedScene" uid="uid://djkm75sn2env" path="res://Scenes/base_card.tscn" id="1_eqxxp"]
+[ext_resource type="Texture2D" uid="uid://hkspdi3d7p52" path="res://Assets/Card Images/A-leopard-skin-apprehended-from-a-local-poacher-by-the-staff-of-Soe-Park-Range-in-2012.png" id="2_50plc"]
+
+[node name="Poacher" instance=ExtResource("1_eqxxp")]
+actionName = "poacher"
+cards = 1
+actions = 1
+money = 1
+cost = 4
+cardDesc = "Discard a card per empty Supply pile."
+cardKeywords = "action"
+
+[node name="CardName" parent="VBoxContainer" index="0"]
+text = "Poacher"
+
+[node name="TextureRect" parent="VBoxContainer/MarginContainer" index="0"]
+texture = ExtResource("2_50plc")

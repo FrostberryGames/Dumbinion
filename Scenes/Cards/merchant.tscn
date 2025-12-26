@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://c13smp8du4h1f"]
+
+[ext_resource type="PackedScene" uid="uid://djkm75sn2env" path="res://Scenes/base_card.tscn" id="1_vn83e"]
+[ext_resource type="Texture2D" uid="uid://bhiloxyq068hq" path="res://Assets/Card Images/arab-merchant-hulton-archive.jpg" id="2_vepjs"]
+
+[node name="Merchant" instance=ExtResource("1_vn83e")]
+actionName = "merchant"
+cards = 1
+actions = 1
+cost = 3
+cardDesc = "The first time you play a Silver this turn, +1$"
+cardKeywords = "action"
+
+[node name="CardName" parent="VBoxContainer" index="0"]
+text = "Merchant"
+
+[node name="TextureRect" parent="VBoxContainer/MarginContainer" index="0"]
+texture = ExtResource("2_vepjs")

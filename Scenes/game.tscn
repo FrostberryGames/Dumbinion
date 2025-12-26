@@ -1,7 +1,8 @@
-[gd_scene load_steps=26 format=3 uid="uid://da350s8wlnwoi"]
+[gd_scene load_steps=27 format=3 uid="uid://da350s8wlnwoi"]
 
 [ext_resource type="Shader" uid="uid://lopds28d3gwy" path="res://Shaders/Background.gdshader" id="1_ebmjs"]
 [ext_resource type="Script" uid="uid://cel5i8ui41jxw" path="res://Scripts/game.gd" id="1_nnt18"]
+[ext_resource type="Script" uid="uid://d1j4mysxpxnl6" path="res://Scenes/outer_area.gd" id="2_nnt18"]
 [ext_resource type="PackedScene" uid="uid://cyt60dbvhw8yr" path="res://Scenes/Cards/province.tscn" id="5_nb51f"]
 [ext_resource type="PackedScene" uid="uid://cduajy0d15htr" path="res://Scenes/Cards/gold.tscn" id="6_nnt18"]
 [ext_resource type="PackedScene" uid="uid://c0n0ncdo1ptwj" path="res://Scenes/Cards/duchy.tscn" id="7_ewbju"]
@@ -385,21 +386,29 @@ custom_minimum_size = Vector2(180, 0)
 layout_mode = 2
 script = ExtResource("14_1phco")
 
-[node name="Alert" type="Label" parent="PlayerUI"]
-visible = false
+[node name="HBoxContainer" type="HBoxContainer" parent="PlayerUI"]
 layout_mode = 1
 anchors_preset = -1
-anchor_top = 0.59800005
-anchor_right = 1.0
-anchor_bottom = 0.683
-offset_top = 0.15997314
-offset_bottom = 0.35998535
+anchor_top = 0.61527777
+anchor_right = 0.99583334
+anchor_bottom = 0.6851852
 grow_horizontal = 2
 grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Alert" type="Label" parent="PlayerUI/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 50
-text = "Alert"
 horizontal_alignment = 1
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="SubmitButton" type="Button" parent="PlayerUI/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+disabled = true
+text = "Submit"
 
 [node name="WinLabel" type="Label" parent="."]
 visible = false
@@ -418,9 +427,22 @@ grow_vertical = 2
 text = "WINS!"
 label_settings = SubResource("LabelSettings_nb51f")
 
+[node name="Outer area" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -34.0
+offset_top = -239.0
+offset_right = 6.0
+offset_bottom = -146.0
+grow_horizontal = 2
+script = ExtResource("2_nnt18")
+
 [connection signal="pressed" from="PlayerUI/PhaseEndButton" to="." method="_on_phase_end_button_pressed"]
 [connection signal="sort_children" from="PlayerUI/Field/Play/Margin/GridContainer" to="PlayerUI/Field/Play/Margin/GridContainer" method="_on_sort_children"]
 [connection signal="sort_children" from="PlayerUI/PlayerSide/Discard/Margin/DiscardPileContainer" to="PlayerUI/PlayerSide/Discard/Margin/DiscardPileContainer" method="_on_sort_children"]
 [connection signal="sort_children" from="PlayerUI/PlayerSide/Deck/Margin/DeckContainer" to="PlayerUI/PlayerSide/Deck/Margin/DeckContainer" method="_on_sort_children"]
 [connection signal="child_order_changed" from="PlayerUI/PlayerSide/Hand/Margin/HandContainer" to="PlayerUI/PlayerSide/Hand/Margin/HandContainer" method="_on_child_order_changed"]
 [connection signal="sort_children" from="PlayerUI/PlayerSide/Hand/Margin/HandContainer" to="PlayerUI/PlayerSide/Hand/Margin/HandContainer" method="_on_sort_children"]
+[connection signal="pressed" from="PlayerUI/HBoxContainer/SubmitButton" to="PlayerUI/PlayerSide" method="_on_submit_button_pressed"]

@@ -30,12 +30,15 @@ func mouse_exited_card():
 func get_all_children():
 	return $Kingdom/Margin/Grid.get_children() + $Resources/Margin/ScrollContainer/Grid.get_children()
 
-func prompt_select(callback,cost:int=9999):
+func placeholder(card):
+	return true
+
+func prompt_select(callback,cost:int=9999,filter=placeholder):
 	prompt_callback = callback
 	if prompted:
 		unprompt_select()
 	for i in get_all_children():
-		if i.cost <= cost:
+		if i.cost <= cost and filter.call(i):
 			i.prompt_select()
 			prompted=true
 			

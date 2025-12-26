@@ -5,7 +5,7 @@
 
 [node name="Copper" instance=ExtResource("1_yx73y")]
 money = 1
-cardKeywords = "treasure"
+cardKeywords = "treasure copper"
 quantity = 40
 
 [node name="CardName" parent="VBoxContainer" index="0"]

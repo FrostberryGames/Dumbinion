@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://d4epcvksaon2x"]
+
+[ext_resource type="PackedScene" uid="uid://djkm75sn2env" path="res://Scenes/base_card.tscn" id="1_jydgd"]
+[ext_resource type="Texture2D" uid="uid://c75dwd6ibrgcd" path="res://Assets/Card Images/Wine_cellar.jpg" id="2_jydgd"]
+
+[node name="Cellar" instance=ExtResource("1_jydgd")]
+actionName = "cellar"
+actions = 1
+cost = 2
+cardDesc = "Discard any number of cards, then draw that many."
+cardKeywords = "action"
+
+[node name="CardName" parent="VBoxContainer" index="0"]
+text = "Cellar"
+
+[node name="TextureRect" parent="VBoxContainer/MarginContainer" index="0"]
+texture = ExtResource("2_jydgd")
