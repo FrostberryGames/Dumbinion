@@ -73,8 +73,8 @@ func clear_play_area():
 @rpc("any_peer","reliable")
 func start_turn():
 	buys=1
-	actions=2
-	dollars=10
+	actions=1
+	dollars=0
 	merchant_num = 0
 	phase_end_button.disabled=false
 	begin_action()
@@ -135,7 +135,7 @@ func mine_callback1(card):
 	kingdom.prompt_select(mine_callback2,card.cost+3,card_keyword_filter.bind("treasure"))
 	set_alert("Select 1 Treasure to gain","Waiting for "+cur_uname+" to buy a treasure")
 func mine_callback2(card):
-	player_side.hand.add_child(take_card_from_kingdom(card))
+	take_card_from_kingdom(card).reparent_and_move(player_side.hand)
 	begin_action()
 
 func moneylender_played():
