@@ -5,6 +5,7 @@
 
 [node name="Cellar" instance=ExtResource("1_jydgd")]
 actionName = "cellar"
+cardTags = "Action"
 actions = 1
 cost = 2
 cardDesc = "Discard any number of cards, then draw that many."

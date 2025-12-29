@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bd0d3g37e3amf" path="res://Assets/Card Images/1200px-0_typical_smithy_in_finland.JPG" id="2_chneo"]
 
 [node name="Smithy" instance=ExtResource("1_okwl8")]
+cardTags = "Action"
 cards = 3
 cost = 4
 cardKeywords = "action"

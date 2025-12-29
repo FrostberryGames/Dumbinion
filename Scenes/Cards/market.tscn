@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://gpojmpmqfjxg" path="res://Assets/Card Images/market_art.jpg" id="2_hoeaa"]
 
 [node name="Market" instance=ExtResource("1_78yvq")]
+cardTags = "Action"
 cards = 1
 actions = 1
 buys = 1

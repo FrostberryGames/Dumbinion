@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://b2vxiynocjwa7" path="res://Assets/TempAssets/copper.png" id="2_21fm1"]
 
 [node name="Copper" instance=ExtResource("1_yx73y")]
+cardTags = "Treasure"
 money = 1
 cardKeywords = "treasure copper"
 quantity = 40

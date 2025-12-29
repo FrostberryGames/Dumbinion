@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://cu6w2qtg85ll6"]
+
+[ext_resource type="PackedScene" uid="uid://djkm75sn2env" path="res://Scenes/base_card.tscn" id="1_ql5rg"]
+[ext_resource type="Texture2D" uid="uid://j1w5sh0w7mns" path="res://Assets/Card Images/bureaucrat-e1309011331510.png" id="2_byjlu"]
+
+[node name="Bureaucrat" instance=ExtResource("1_ql5rg")]
+actionName = "bureaucrat"
+cardTags = "Action, Attack"
+cost = 4
+cardDesc = "Gain a Silver onto your deck. Each other player reveals a Victory card from their hand and puts it onto their deck."
+cardKeywords = "action attack"
+
+[node name="CardName" parent="VBoxContainer" index="0"]
+text = "Bureaucrat"
+
+[node name="TextureRect" parent="VBoxContainer/MarginContainer" index="0"]
+texture = ExtResource("2_byjlu")

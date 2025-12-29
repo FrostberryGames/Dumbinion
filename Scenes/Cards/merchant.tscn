@@ -5,6 +5,7 @@
 
 [node name="Merchant" instance=ExtResource("1_vn83e")]
 actionName = "merchant"
+cardTags = "Action"
 cards = 1
 actions = 1
 cost = 3

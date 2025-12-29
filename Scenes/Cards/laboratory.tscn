@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://d21347ovtn60q" path="res://Assets/Card Images/pexels-edward-jenner-4031321.jpg" id="2_ucbct"]
 
 [node name="Laboratory" instance=ExtResource("1_ucbct")]
+cardTags = "Action"
 cards = 2
 actions = 1
 cost = 5

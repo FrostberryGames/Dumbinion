@@ -5,6 +5,7 @@
 
 [node name="Poacher" instance=ExtResource("1_eqxxp")]
 actionName = "poacher"
+cardTags = "Action"
 cards = 1
 actions = 1
 money = 1

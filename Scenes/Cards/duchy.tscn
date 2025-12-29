@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://d0l4irkr30xqj" path="res://Assets/TempAssets/duchy.png" id="2_ciqvr"]
 
 [node name="Duchy" instance=ExtResource("1_ciqvr")]
+cardTags = "Victory"
 actions = 3
 cost = 5
 cardKeywords = "victory"

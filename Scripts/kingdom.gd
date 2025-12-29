@@ -30,7 +30,7 @@ func mouse_exited_card():
 func get_all_children():
 	return $Kingdom/Margin/Grid.get_children() + $Resources/Margin/ScrollContainer/Grid.get_children()
 
-func placeholder(card):
+func placeholder(_card):
 	return true
 
 func prompt_select(callback,cost:int=9999,filter=placeholder):
@@ -86,5 +86,6 @@ func _input(event: InputEvent) -> void:
 func _ready() -> void:
 	for card in $Resources/Margin/ScrollContainer/Grid.get_children():
 		card.show_quantity()
+		card.hide_info()
 		card.card_selected.connect(card_pressed.bind(card))
 	

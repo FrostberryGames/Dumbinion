@@ -5,6 +5,7 @@
 
 [node name="Mine" instance=ExtResource("1_37byr")]
 actionName = "mine"
+cardTags = "Action"
 cost = 5
 cardDesc = "You may trash a Treasure from your hand. Gain a Treasure to your hand costing up to $3 more than it."
 cardKeywords = "action"

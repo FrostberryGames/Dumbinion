@@ -2,7 +2,7 @@
 
 [ext_resource type="Shader" uid="uid://lopds28d3gwy" path="res://Shaders/Background.gdshader" id="1_ebmjs"]
 [ext_resource type="Script" uid="uid://cel5i8ui41jxw" path="res://Scripts/game.gd" id="1_nnt18"]
-[ext_resource type="Script" uid="uid://d1j4mysxpxnl6" path="res://Scenes/outer_area.gd" id="2_nnt18"]
+[ext_resource type="Script" uid="uid://d1j4mysxpxnl6" path="res://Scripts/outer_area.gd" id="2_nnt18"]
 [ext_resource type="PackedScene" uid="uid://cyt60dbvhw8yr" path="res://Scenes/Cards/province.tscn" id="5_nb51f"]
 [ext_resource type="PackedScene" uid="uid://cduajy0d15htr" path="res://Scenes/Cards/gold.tscn" id="6_nnt18"]
 [ext_resource type="PackedScene" uid="uid://c0n0ncdo1ptwj" path="res://Scenes/Cards/duchy.tscn" id="7_ewbju"]

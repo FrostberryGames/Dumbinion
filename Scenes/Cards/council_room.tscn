@@ -5,6 +5,7 @@
 
 [node name="Council Room" instance=ExtResource("1_gm2ut")]
 actionName = "council room"
+cardTags = "Action"
 cards = 4
 buys = 1
 cost = 5

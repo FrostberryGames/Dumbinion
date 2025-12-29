@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cu6c2hd4dqdyf" path="res://Assets/TempAssets/gold.png" id="2_r7jq5"]
 
 [node name="Gold" instance=ExtResource("1_r7jq5")]
+cardTags = "Treasure"
 money = 3
 cost = 6
 cardKeywords = "treasure"

@@ -74,7 +74,7 @@ func clear_play_area():
 func start_turn():
 	buys=1
 	actions=1
-	dollars=0
+	dollars= 10 if OS.is_debug_build() else 0
 	merchant_num = 0
 	phase_end_button.disabled=false
 	begin_action()

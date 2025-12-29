@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bw5cxc3pdw830" path="res://Assets/TempAssets/estate.png" id="2_rympu"]
 
 [node name="Estate" instance=ExtResource("1_hdrch")]
+cardTags = "Victory"
 actions = 1
 cost = 2
 cardKeywords = "victory"

@@ -5,6 +5,7 @@
 
 [node name="Chapel" instance=ExtResource("1_38ti1")]
 actionName = "chapel"
+cardTags = "Action"
 cost = 2
 cardDesc = "Trash up to 4 cards from your hand."
 cardKeywords = "action"

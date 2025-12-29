@@ -3,6 +3,7 @@ class_name BaseCard
 
 signal card_selected
 @export var actionName:String
+@export var cardTags:String
 @export var cards:int
 @export var actions:int
 @export var buys:int
@@ -49,6 +50,7 @@ func _ready() -> void:
 	$Quantity.hide()
 	$Quantity.text=str(quantity)
 	$VBoxContainer/CardDesc.text = cardDesc
+	$VBoxContainer/Panel/Label.text = cardTags
 	$CardCost.text = str(cost)+"$"
 	var effects = ""
 	if cards:
@@ -69,8 +71,10 @@ func _ready() -> void:
 func hide_info():
 	$VBoxContainer/CardDesc.hide()
 	$VBoxContainer/CardEffects.hide()
+	$VBoxContainer/Panel.hide()
 	
 func show_info():
+	$VBoxContainer/Panel.show()
 	if "treasure" in cardKeywords or "victory" in cardKeywords:
 		return
 	if($VBoxContainer/CardDesc.text):

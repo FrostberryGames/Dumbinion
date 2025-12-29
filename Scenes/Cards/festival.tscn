@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dsta0roo3w78f" path="res://Assets/Card Images/image.jpg" id="2_04vat"]
 
 [node name="Festival" instance=ExtResource("1_5gav7")]
+cardTags = "Action"
 actions = 2
 buys = 1
 money = 2
