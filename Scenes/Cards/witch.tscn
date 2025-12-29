@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://cd5esi644kdcl"]
+
+[ext_resource type="PackedScene" uid="uid://djkm75sn2env" path="res://Scenes/base_card.tscn" id="1_4insj"]
+[ext_resource type="Texture2D" uid="uid://qjj0litrx4ab" path="res://Assets/Card Images/witch.webp" id="2_gcwiu"]
+
+[node name="Witch" instance=ExtResource("1_4insj")]
+actionName = "witch"
+cardTags = "Action - Attack"
+cards = 2
+cost = 5
+cardDesc = "+2 CardsEach other player gains a Curse."
+cardKeywords = "action attack"
+
+[node name="CardName" parent="VBoxContainer" index="0"]
+text = "Witch"
+
+[node name="TextureRect" parent="VBoxContainer/MarginContainer" index="0"]
+texture = ExtResource("2_gcwiu")

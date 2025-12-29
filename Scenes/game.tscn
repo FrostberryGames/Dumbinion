@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://da350s8wlnwoi"]
+[gd_scene load_steps=28 format=3 uid="uid://da350s8wlnwoi"]
 
 [ext_resource type="Shader" uid="uid://lopds28d3gwy" path="res://Shaders/Background.gdshader" id="1_ebmjs"]
 [ext_resource type="Script" uid="uid://cel5i8ui41jxw" path="res://Scripts/game.gd" id="1_nnt18"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://c8wg0a4tcnve6" path="res://Assets/TempAssets/TempCard.png" id="9_h4fw4"]
 [ext_resource type="PackedScene" uid="uid://b4s0fydb88sat" path="res://Scenes/Cards/estate.tscn" id="9_o5yvi"]
 [ext_resource type="Script" uid="uid://d0hkwt6yklfyt" path="res://Scripts/kingdom.gd" id="10_o5yvi"]
+[ext_resource type="PackedScene" uid="uid://cbyyxhqw03a8b" path="res://Scenes/Cards/curse.tscn" id="11_ewbju"]
 [ext_resource type="Script" uid="uid://diclwmu50jjfp" path="res://Scripts/discard_pile_container.gd" id="12_rku1e"]
 [ext_resource type="Script" uid="uid://ccxn8bwrap35s" path="res://Scripts/play_container.gd" id="13_85qyi"]
 [ext_resource type="Script" uid="uid://dv10xemhvbe1u" path="res://Scripts/player_side.gd" id="13_ewbju"]
@@ -243,6 +244,9 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="Copper" parent="PlayerUI/Field/Resources/Margin/ScrollContainer/Grid" instance=ExtResource("8_ldgsr")]
+layout_mode = 2
+
+[node name="Curse" parent="PlayerUI/Field/Resources/Margin/ScrollContainer/Grid" instance=ExtResource("11_ewbju")]
 layout_mode = 2
 
 [node name="Kingdom" type="PanelContainer" parent="PlayerUI/Field"]
