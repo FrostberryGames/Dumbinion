@@ -100,11 +100,19 @@ func shuffle_discard():
 	for c in cards:
 		c.reparent_and_move(deck)
 	
+func get_all_children():
+	return $Discard/Margin/DiscardPileContainer.get_children() + $Deck/Margin/DeckContainer.get_children() + $Hand/Margin/HandContainer.get_children()
+	
 func count_vp():
 	var vps = 0
-	for card:BaseCard in $Hand/Margin/HandContainer.get_children() + $Deck/Margin/DeckContainer.get_children() + $Discard/Margin/DiscardPileContainer.get_children():
+	var cards = get_all_children()
+	for card:BaseCard in cards:
 		if "victory" in card.cardKeywords:
-			vps+=card.actions
+			match card.actionName:
+				"garden":
+					vps+=len(cards)/10
+				_:
+					vps+=card.actions
 	return vps
 	
 func draw_cards(num):
