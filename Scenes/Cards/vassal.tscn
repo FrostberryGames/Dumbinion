@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://13ko64gop00s"]
+
+[ext_resource type="PackedScene" uid="uid://djkm75sn2env" path="res://Scenes/base_card.tscn" id="1_yx0fm"]
+[ext_resource type="Texture2D" uid="uid://bw1tar5tj4eyd" path="res://Assets/Card Images/vassal.jpg" id="2_oxehf"]
+
+[node name="Vassal" instance=ExtResource("1_yx0fm")]
+actionName = "vassal"
+cardTags = "Action"
+money = 2
+cost = 3
+cardDesc = "Discard the top card of your deck. If it's an Action card, you may play it."
+cardKeywords = "action"
+
+[node name="CardName" parent="VBoxContainer" index="0"]
+text = "Vassal"
+
+[node name="TextureRect" parent="VBoxContainer/MarginContainer" index="0"]
+texture = ExtResource("2_oxehf")
