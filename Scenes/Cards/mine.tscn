@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://wlu563ys0gt8"]
+[gd_scene load_steps=4 format=3 uid="uid://wlu563ys0gt8"]
 
 [ext_resource type="PackedScene" uid="uid://djkm75sn2env" path="res://Scenes/base_card.tscn" id="1_37byr"]
+[ext_resource type="Script" uid="uid://b8gekwmq7vtp3" path="res://Scripts/Card Scripts/mine.gd" id="2_3rp1p"]
 [ext_resource type="Texture2D" uid="uid://b0otmglffamq6" path="res://Assets/Card Images/Williams Open Pit Mine_0.jpg" id="2_ioors"]
 
 [node name="Mine" instance=ExtResource("1_37byr")]
+script = ExtResource("2_3rp1p")
 actionName = "mine"
 cardTags = "Action"
 cost = 5

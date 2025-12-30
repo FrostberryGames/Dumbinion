@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://djep6r0oj8plw"]
+[gd_scene load_steps=4 format=3 uid="uid://djep6r0oj8plw"]
 
 [ext_resource type="PackedScene" uid="uid://djkm75sn2env" path="res://Scenes/base_card.tscn" id="1_eqxxp"]
 [ext_resource type="Texture2D" uid="uid://hkspdi3d7p52" path="res://Assets/Card Images/A-leopard-skin-apprehended-from-a-local-poacher-by-the-staff-of-Soe-Park-Range-in-2012.png" id="2_50plc"]
+[ext_resource type="Script" uid="uid://bk4b7nab1ct0j" path="res://Scripts/Card Scripts/poacher.gd" id="2_qda8g"]
 
 [node name="Poacher" instance=ExtResource("1_eqxxp")]
+script = ExtResource("2_qda8g")
 actionName = "poacher"
 cardTags = "Action"
 cards = 1

@@ -1,4 +1,5 @@
 extends Node
+class_name Game
 
 signal turn_finished
 @onready
@@ -62,7 +63,7 @@ func set_turn_name(uname):
 	cur_uname=uname
 	$PlayerUI/TurnInfo/VBoxContainer/TurnName.text = uname+"'s Turn"
 
-func card_keyword_filter(card:BaseCard,keyword):
+static func card_keyword_filter(card:BaseCard,keyword):
 	return keyword in card.cardKeywords
 
 @rpc("any_peer","reliable")
@@ -78,7 +79,7 @@ func start_turn():
 	merchant_num = 0
 	phase_end_button.disabled=false
 	begin_action()
-	update_text.rpc(actions,buys,dollars)
+	update_turn_info()
 
 func begin_action():
 	if actions<=0 or not player_side.prompt_cards_from_hand(action_card_played,card_keyword_filter.bind("action")):
@@ -106,57 +107,17 @@ func card_to_play_area(card_scene):
 func trash_card(card):
 	card.queue_free()
 
-func cellar_played():
-	player_side.prompt_multiple_cards(cellar_callback)
-	set_alert("Discard cards","Waiting for "+cur_uname+" to discard cards")
-func cellar_callback(cards):
-	for i in cards:
-		player_side.discard_card(i)
-	player_side.draw_cards(len(cards))
-	begin_action()
-
-func chapel_played():
-	player_side.prompt_multiple_cards(chapel_callback,4)
-	set_alert("Trash up to 4 cards","Waiting for "+cur_uname+" to trash cards")
-func chapel_callback(cards):
-	for i:BaseCard in cards:
-		trash_card(i)
-	begin_action()
+func update_turn_info():
+	update_text.rpc(actions,buys,dollars)
 
 @rpc("any_peer","reliable")
-func council_room_played():
-	player_side.draw_cards(1)
+func other_players_draw_cards(num):
+	player_side.draw_cards(num)
 
-func mine_played():
-	player_side.prompt_cards_from_hand(mine_callback1,card_keyword_filter.bind("treasure"))
-	set_alert("Select 1 Treasure to trash","Waiting for "+cur_uname+" to trash a treasure")
-func mine_callback1(card):
-	trash_card(card)
-	kingdom.prompt_select(mine_callback2,card.cost+3,card_keyword_filter.bind("treasure"))
-	set_alert("Select 1 Treasure to gain","Waiting for "+cur_uname+" to buy a treasure")
-func mine_callback2(card):
-	take_card_from_kingdom(card).reparent_and_move(player_side.hand)
-	begin_action()
-
-func moneylender_played():
-	if not player_side.prompt_cards_from_hand(moneylender_callback,card_keyword_filter.bind("copper")):
-		begin_action()
-	else:
-		set_alert("Select 1 copper to trash","Waiting for "+cur_uname+" to trash a copper")
-func moneylender_callback(card):
-	trash_card(card)
-	dollars+=3
-	update_text.rpc(actions,buys,dollars)
-	begin_action()
-
-func poacher_played():
-	player_side.prompt_multiple_cards(poacher_callback,kingdom.empty_piles,true)
-	set_alert("Select "+str(kingdom.empty_piles)+" card to discard","Waiting for "+cur_uname+" to discard cards")
-	
-func poacher_callback(cards):
-	for i in cards:
-		player_side.discard_card(i)
-	begin_action()
+func bureaucrat_played():
+	player_side.discard_card(take_card_from_kingdom($PlayerUI/Field/Resources/Margin/ScrollContainer/Grid/Silver))
+func bureaucrat_attack():
+	pass
 
 func action_card_played(card:BaseCard):
 	actions-=1
@@ -166,30 +127,9 @@ func action_card_played(card:BaseCard):
 	card.reparent_and_move(play_field)
 	card_to_play_area.rpc(card.scene_file_path)
 	player_side.draw_cards(card.cards)
-	update_text.rpc(actions,buys,dollars)
-	match card.actionName:
-		"cellar":
-			cellar_played()
-		"chapel":
-			chapel_played()
-		"council room":
-			council_room_played.rpc()
-			begin_action()
-		"merchant":
-			merchant_num+=1
-			begin_action()
-		"mine":
-			mine_played()
-		"moneylender":
-			moneylender_played()
-		"poacher":
-			if kingdom.empty_piles>0:
-				poacher_played()
-			else:
-				begin_action()
-		_:
-			begin_action()
-	
+	update_turn_info()
+	card.start_action(self)
+
 func end_buy_phase():
 	
 	kingdom.unprompt_select()
@@ -212,6 +152,9 @@ func move_card_out(card_path,pos):
 	card.reparent_and_move($"Outer area",3)
 
 func take_card_from_kingdom(kingdom_card):
+	if kingdom_card.disabled:
+		return
+	kingdom_card.decrease_quantity.rpc()
 	move_card_out.rpc(kingdom_card.scene_file_path,kingdom_card.global_position)
 	var new_card = kingdom_card.duplicate()
 	new_card.name = cur_uname+str(card_ind)
@@ -226,7 +169,7 @@ func treasure_played(card:BaseCard):
 	if "silver" in card.cardKeywords:
 		dollars+=merchant_num
 		merchant_num = 0
-	update_text.rpc(actions,buys,dollars)
+	update_turn_info()
 	card.reparent_and_move(play_field)
 	card_to_play_area.rpc(card.scene_file_path)
 	player_side.prompt_cards_from_hand(treasure_played,card_keyword_filter.bind("treasure"))
@@ -238,11 +181,10 @@ func card_bought(card:BaseCard):
 	buys-=1
 	player_side.discard_card(take_card_from_kingdom(card))
 	if buys > 0:
-		update_text.rpc(actions,buys,dollars)
+		update_turn_info()
 		begin_buy_phase()
 	else:
 		end_turn()
-
 
 func _on_phase_end_button_pressed() -> void:
 	if phase =="action":

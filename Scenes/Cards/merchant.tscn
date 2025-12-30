@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://c13smp8du4h1f"]
+[gd_scene load_steps=4 format=3 uid="uid://c13smp8du4h1f"]
 
 [ext_resource type="PackedScene" uid="uid://djkm75sn2env" path="res://Scenes/base_card.tscn" id="1_vn83e"]
+[ext_resource type="Script" uid="uid://dj6rrhq73pyxt" path="res://Scripts/Card Scripts/merchant.gd" id="2_etyqe"]
 [ext_resource type="Texture2D" uid="uid://bhiloxyq068hq" path="res://Assets/Card Images/arab-merchant-hulton-archive.jpg" id="2_vepjs"]
 
 [node name="Merchant" instance=ExtResource("1_vn83e")]
+script = ExtResource("2_etyqe")
 actionName = "merchant"
 cardTags = "Action"
 cards = 1

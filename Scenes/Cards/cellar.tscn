@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://d4epcvksaon2x"]
+[gd_scene load_steps=4 format=3 uid="uid://d4epcvksaon2x"]
 
 [ext_resource type="PackedScene" uid="uid://djkm75sn2env" path="res://Scenes/base_card.tscn" id="1_jydgd"]
 [ext_resource type="Texture2D" uid="uid://c75dwd6ibrgcd" path="res://Assets/Card Images/Wine_cellar.jpg" id="2_jydgd"]
+[ext_resource type="Script" uid="uid://dh6ybt2rtdar6" path="res://Scripts/Card Scripts/cellar.gd" id="2_q42cf"]
 
 [node name="Cellar" instance=ExtResource("1_jydgd")]
+script = ExtResource("2_q42cf")
 actionName = "cellar"
 cardTags = "Action"
 actions = 1

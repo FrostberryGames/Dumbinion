@@ -1,4 +1,5 @@
 extends HBoxContainer
+class_name PlayerSide
 
 @onready
 var deck =$Deck/Margin/DeckContainer

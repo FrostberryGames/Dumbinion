@@ -13,7 +13,6 @@ func increase_empty_piles():
 
 func card_pressed(card:BaseCard):
 	unprompt_select()
-	card.decrease_quantity.rpc()
 	if card.disabled:
 		increase_empty_piles.rpc()
 		if empty_piles>=3 or card.name == "Province":

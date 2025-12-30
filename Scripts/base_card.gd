@@ -15,6 +15,7 @@ signal card_selected
 var disabled = false
 var moving = false
 var selected = false
+var game:Game
 
 func prompt_select():
 	if(disabled):
@@ -85,6 +86,13 @@ func show_info():
 
 func _on_button_pressed() -> void:
 	card_selected.emit()
+
+func start_action(g:Game):
+	game=g
+	action()
+	
+func action():
+	game.begin_action()
 
 func finish_reparent():
 	moving=false

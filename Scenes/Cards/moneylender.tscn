@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://dovkjtx1cpeh6"]
+[gd_scene load_steps=4 format=3 uid="uid://dovkjtx1cpeh6"]
 
 [ext_resource type="PackedScene" uid="uid://djkm75sn2env" path="res://Scenes/base_card.tscn" id="1_x43bl"]
 [ext_resource type="Texture2D" uid="uid://c1sq3ua6g1uob" path="res://Assets/Card Images/induce-businessmen-discussion-business-concept-cartoon-illustration-69137846.webp" id="2_7kfw0"]
+[ext_resource type="Script" uid="uid://d1dcxs0iqpvyb" path="res://Scripts/Card Scripts/moneylender.gd" id="2_kmoh0"]
 
 [node name="Moneylender" instance=ExtResource("1_x43bl")]
+script = ExtResource("2_kmoh0")
 actionName = "moneylender"
 cardTags = "Action"
 cost = 4

@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://bqtlwpurd32cy"]
+[gd_scene load_steps=4 format=3 uid="uid://bqtlwpurd32cy"]
 
 [ext_resource type="PackedScene" uid="uid://djkm75sn2env" path="res://Scenes/base_card.tscn" id="1_gm2ut"]
 [ext_resource type="Texture2D" uid="uid://cfyl0i8c2tm7m" path="res://Assets/Card Images/council-chambers-dais-desk-seats-6-7-42.jpg" id="2_c67sk"]
+[ext_resource type="Script" uid="uid://d4gdaor07ioai" path="res://Scripts/Card Scripts/council_room.gd" id="2_cm6ji"]
 
 [node name="Council Room" instance=ExtResource("1_gm2ut")]
+script = ExtResource("2_cm6ji")
 actionName = "council room"
 cardTags = "Action"
 cards = 4
