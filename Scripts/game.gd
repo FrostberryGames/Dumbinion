@@ -114,11 +114,6 @@ func update_turn_info():
 func other_players_draw_cards(num):
 	player_side.draw_cards(num)
 
-func bureaucrat_played():
-	player_side.discard_card(take_card_from_kingdom($PlayerUI/Field/Resources/Margin/ScrollContainer/Grid/Silver))
-func bureaucrat_attack():
-	pass
-
 func action_card_played(card:BaseCard):
 	actions-=1
 	actions+=card.actions
