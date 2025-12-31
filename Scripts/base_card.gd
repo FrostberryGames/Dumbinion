@@ -21,6 +21,16 @@ func prompt_select():
 	if(disabled):
 		return
 	$Button.show()
+	
+static func attack(game:Game):
+	pass
+		
+func start_react(game):
+	self.game=game
+	reaction()
+		
+func reaction():
+	game.attack_callback.call(self)
 		
 func hide_card():
 	$BackOfCard.show()

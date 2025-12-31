@@ -1,13 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://ba52euqrw1x4n"]
+[gd_scene load_steps=4 format=3 uid="uid://ba52euqrw1x4n"]
 
 [ext_resource type="PackedScene" uid="uid://djkm75sn2env" path="res://Scenes/base_card.tscn" id="1_wntvi"]
 [ext_resource type="Texture2D" uid="uid://y5j6st5egoem" path="res://Assets/Card Images/Medieval-Castle-defence-Moat.jpeg" id="2_5smv3"]
+[ext_resource type="Script" uid="uid://51t0eugiw6jc" path="res://Scripts/Card Scripts/moat.gd" id="2_b1vkp"]
 
 [node name="Moat" instance=ExtResource("1_wntvi")]
+script = ExtResource("2_b1vkp")
 actionName = "moat"
 cardTags = "Action, Reaction"
 cards = 2
 cost = 2
+cardDesc = "When another player plays an Attack card, you may first reveal this from your hand, to be unaffected by it."
+cardKeywords = "ATK-REACTION action"
 
 [node name="CardName" parent="VBoxContainer" index="0"]
 text = "Moat"

@@ -41,7 +41,10 @@ func start_button_pressed():
 	players.shuffle()
 	cur_turn=-1
 	var card_list = []
-	kingdom_cards.shuffle()
+	if OS.is_debug_build():
+		kingdom_cards.reverse()
+	else:
+		kingdom_cards.shuffle()
 	for i in range(10):
 		card_list.append(kingdom_cards[i])
 	$Game.kingdom.generate_kingdom.rpc(card_list)

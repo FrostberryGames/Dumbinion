@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://b8gjhy2n10dke"]
+[gd_scene load_steps=4 format=3 uid="uid://b8gjhy2n10dke"]
 
 [ext_resource type="PackedScene" uid="uid://djkm75sn2env" path="res://Scenes/base_card.tscn" id="1_4insj"]
 [ext_resource type="Texture2D" uid="uid://qjj0litrx4ab" path="res://Assets/Card Images/witch.webp" id="2_gcwiu"]
+[ext_resource type="Script" uid="uid://oytos52ajw7y" path="res://Scripts/Card Scripts/witch.gd" id="2_gsvov"]
 
 [node name="Witch" instance=ExtResource("1_4insj")]
+script = ExtResource("2_gsvov")
 actionName = "witch"
 cardTags = "Action - Attack"
 cards = 2

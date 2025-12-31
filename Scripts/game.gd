@@ -5,11 +5,19 @@ signal turn_finished
 @onready
 var kingdom = $PlayerUI/Field
 @onready
-var player_side = $PlayerUI/PlayerSide
+var player_side:PlayerSide = $PlayerUI/PlayerSide
 @onready
 var phase_end_button = $PlayerUI/PhaseEndButton
 @onready
 var play_field = $PlayerUI/Field/Play/Margin/GridContainer
+@onready
+var card_picker:CardPicker = $PlayerUI/CardPicker
+@onready
+var gold = $PlayerUI/Field/Resources/Margin/ScrollContainer/Grid/Gold
+@onready
+var silver = $PlayerUI/Field/Resources/Margin/ScrollContainer/Grid/Silver
+@onready
+var curse = $PlayerUI/Field/Resources/Margin/ScrollContainer/Grid/Curse
 var buys = 0
 var actions = 0
 var cur_uname= ""
@@ -18,6 +26,46 @@ var card_ind=0
 var phase = ""
 var vp = 3
 var merchant_num = 0
+var attack_callback:Callable
+var attack_num=0
+var attack_finished:Callable
+var attacking_id
+var card_registry={
+	"bureaucrat":Bureaucrat,
+	"witch":Witch
+}
+
+
+@rpc("any_peer","reliable")
+func attack_players(card_name):
+	attacking_id=multiplayer.get_remote_sender_id()
+	attack_callback=card_registry[card_name].attack
+	var cards = player_side.hand.get_children().filter(card_keyword_filter.bind("ATK-REACTION"))
+	if cards:
+		set_alert("Select a card, or none, to react with")
+		card_picker.pick_cards(reaction_callback,cards,1)
+	else:
+		attack_callback.call(self)
+
+func end_attack():
+	finished_attack.rpc_id(attacking_id)
+
+func reaction_callback(cards):
+	if !cards:
+		attack_callback.call(self)
+		return
+	cards[0].start_react(self)
+
+func start_attack(callback,card_name):
+	attack_num=0
+	attack_finished=callback
+	attack_players.rpc(card_name)
+
+@rpc("any_peer","reliable")
+func finished_attack():
+	attack_num+=1
+	if attack_num==len(multiplayer.get_peers()):
+		attack_finished.call()
 
 func _ready() -> void:
 	phase_end_button.disabled=true
@@ -28,7 +76,8 @@ func update_alert(msg):
 
 func set_alert(msg,alt_msg=null):
 	$PlayerUI/HBoxContainer/Alert.text = msg
-	update_alert.rpc(alt_msg if alt_msg else msg)
+	if alt_msg:
+		update_alert.rpc(alt_msg)
 
 func update_vp(num):
 	vp = num
@@ -43,7 +92,6 @@ func end_turn():
 	clear_play_area.rpc()
 	for i in play_field.get_children():
 		i.reparent_and_move(player_side.discard)
-	update_vp(player_side.count_vp())
 	if kingdom.game_over:
 		_on_field_game_over.rpc()
 	player_side.discard_card()
@@ -102,7 +150,8 @@ func begin_buy_phase():
 func card_to_play_area(card_scene):
 	var card = load(card_scene).instantiate()
 	card.name="played_card"+str(play_field.get_child_count())
-	play_field.add_child(card)
+	$"Outer area".add_child(card)
+	card.reparent_and_move(play_field)
 
 func trash_card(card):
 	card.queue_free()
@@ -159,6 +208,10 @@ func take_card_from_kingdom(kingdom_card):
 	new_card.global_position = kingdom_card.global_position
 	return new_card
 
+func gain_card(card):
+	player_side.discard_card(take_card_from_kingdom(card))
+	update_vp(player_side.count_vp())
+
 func treasure_played(card:BaseCard):
 	dollars+=card.money
 	if "silver" in card.cardKeywords:
@@ -174,7 +227,7 @@ func treasure_played(card:BaseCard):
 func card_bought(card:BaseCard):
 	dollars -= card.cost
 	buys-=1
-	player_side.discard_card(take_card_from_kingdom(card))
+	gain_card(card)
 	if buys > 0:
 		update_turn_info()
 		begin_buy_phase()
