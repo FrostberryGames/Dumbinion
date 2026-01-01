@@ -105,7 +105,7 @@ func start_action(g:Game):
 	action()
 	
 func action():
-	game.begin_action()
+	action_finished.call()
 
 func finish_reparent():
 	moving=false

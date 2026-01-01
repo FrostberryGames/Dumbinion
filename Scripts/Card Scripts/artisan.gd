@@ -1,6 +1,7 @@
 extends BaseCard
 
 func action():
+	game.set_alert("Select card to gain","Waiting for "+game.cur_uname+" to select a card")
 	game.kingdom.prompt_select(callback,5)
 
 func callback(card):
