@@ -141,6 +141,7 @@ func begin_action():
 	if actions<=0 or not player_side.prompt_cards_from_hand(action_card_played,card_keyword_filter.bind("action")):
 		begin_buy_phase()
 		return
+	phase_end_button.disabled=false
 	set_phase_name.rpc("Action Phase")
 	phase_end_button.text="End Actions"
 	phase="action"
@@ -173,6 +174,7 @@ func other_players_draw_cards(num):
 	player_side.draw_cards(num)
 
 func action_card_played(card:BaseCard,callback=begin_action,bring_to_play=true):
+	phase_end_button.disabled=true
 	actions-=1
 	actions+=card.actions
 	buys+=card.buys
