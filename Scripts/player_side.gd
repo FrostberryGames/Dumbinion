@@ -23,18 +23,21 @@ func selector(card):
 	if !card.selected:
 		if num_selected < num_cards:
 			card.selected = true
+			GlobalAudio._play_selected_sfx()
 			hand.queue_sort()
 			num_selected+=1
 			if required and num_selected == num_cards:
 				submit_button.disabled=false
 	else:
 		card.selected = false
+		GlobalAudio._play_deselect_sfx()
 		num_selected-=1
 		hand.queue_sort()
 		if required:
 			submit_button.disabled = true
 	
 func disconector(card):
+	GlobalAudio._play_selected_sfx()
 	unprompt_cards_from_hand()
 	card_callback.call(card)
 	

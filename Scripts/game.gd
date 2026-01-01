@@ -165,6 +165,7 @@ func card_to_play_area(card_scene):
 func trash_card(card):
 	card.show_card()
 	card.reparent_and_move($"Outer area",1.5,true)
+	GlobalAudio._play_trashed_sfx()
 
 func update_turn_info():
 	update_text.rpc(actions,buys,dollars)
@@ -226,6 +227,8 @@ func take_card_from_kingdom(kingdom_card):
 	return new_card
 
 func gain_card(card):
+	if card.name == "Curse":
+		GlobalAudio._play_curse_sfx()
 	player_side.discard_card(take_card_from_kingdom(card))
 	update_vp(player_side.count_vp())
 

@@ -1,0 +1,26 @@
+[gd_scene load_steps=7 format=3 uid="uid://cly16dsew5v8n"]
+
+[ext_resource type="Script" uid="uid://bsasiiyw46s76" path="res://Scripts/global_audio.gd" id="1_i2lb3"]
+[ext_resource type="AudioStream" uid="uid://dlftqrxi6e587" path="res://Assets/SFX/CardSelect.mp3" id="1_uq25s"]
+[ext_resource type="AudioStream" uid="uid://6kkqsdu0ew1h" path="res://Assets/SFX/Crumple.mp3" id="3_idm86"]
+[ext_resource type="AudioStream" uid="uid://hxwmf0iibaxa" path="res://Assets/SFX/Coin.ogg" id="4_574um"]
+[ext_resource type="AudioStream" uid="uid://dg45nvdea6j2l" path="res://Assets/SFX/Block.mp3" id="5_71icb"]
+[ext_resource type="AudioStream" uid="uid://be05ejs5mfegy" path="res://Assets/SFX/Curse.mp3" id="5_bqjtq"]
+
+[node name="Audio" type="Node"]
+script = ExtResource("1_i2lb3")
+SelectCardSFX = ExtResource("1_uq25s")
+TrashedSFX = ExtResource("3_idm86")
+BuySFX = ExtResource("4_574um")
+BlockSFX = ExtResource("5_71icb")
+
+[node name="SFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_uq25s")
+bus = &"Sfx"
+
+[node name="CurseSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_bqjtq")
+bus = &"Sfx"
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+bus = &"Music"

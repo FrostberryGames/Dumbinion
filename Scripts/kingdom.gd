@@ -6,8 +6,8 @@ var info_showing = false
 var prompt_callback:Callable
 var prompted = false
 
-
 func card_pressed(card:BaseCard):
+	GlobalAudio._play_buy_sfx()
 	unprompt_select()
 	prompt_callback.call(card)
 

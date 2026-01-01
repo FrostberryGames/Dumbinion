@@ -43,12 +43,15 @@ func pick_cards_callback(card):
 			num_selected+=1
 			if required and num_selected == num_cards:
 				submit_button.disabled=false
+			GlobalAudio._play_selected_sfx()
 	else:
 		card.selected = false
 		num_selected-=1
 		card_picker.queue_sort()
 		if required:
 			submit_button.disabled = true
+		GlobalAudio._play_deselected_sfx()
+		
 	update_info_label()
 
 func update_info_label():
@@ -79,8 +82,6 @@ func unprompt_cards():
 		if c.card_selected.is_connected(pick_cards_callback):
 			c.card_selected.disconnect(pick_cards_callback)
 		c.unprompt_select()
-		
-
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -88,7 +89,6 @@ func _ready() -> void:
 	info_label.hide()
 	for i in $VBoxContainer/HBoxContainer.get_children():
 		i.hide()
-
 
 func _on_submit_button_pressed() -> void:
 	submit_button.hide()
