@@ -11,6 +11,6 @@ func action():
 func callback(play,card):
 	if play:
 		game.actions+=1
-		game.action_card_played(card)
+		game.action_card_played(card,action_finished)
 		return
 	action_finished.call()
