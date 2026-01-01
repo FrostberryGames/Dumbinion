@@ -30,6 +30,8 @@ var attack_callback:Callable
 var attack_num=0
 var attack_finished:Callable
 var attacking_id
+var empty_piles = 0
+var game_over = false
 var card_registry={
 	"bureaucrat":Bureaucrat,
 	"witch":Witch,
@@ -37,6 +39,9 @@ var card_registry={
 	"milita":Milita
 }
 
+@rpc("any_peer","call_local","reliable")
+func increase_empty_piles():
+	empty_piles+=1
 
 @rpc("any_peer","reliable")
 func attack_players(card_name):
@@ -95,7 +100,7 @@ func end_turn():
 	clear_play_area.rpc()
 	for i in play_field.get_children():
 		i.reparent_and_move(player_side.discard)
-	if kingdom.game_over:
+	if game_over:
 		_on_field_game_over.rpc()
 	player_side.discard_card()
 	player_side.draw_cards(5)
@@ -205,6 +210,10 @@ func take_card_from_kingdom(kingdom_card):
 	if kingdom_card.disabled:
 		return
 	kingdom_card.decrease_quantity.rpc()
+	if kingdom_card.disabled:
+		increase_empty_piles.rpc()
+		if empty_piles>=3 or kingdom_card.name == "Province":
+			game_over=true
 	move_card_out.rpc(kingdom_card.scene_file_path,kingdom_card.global_position)
 	var new_card = kingdom_card.duplicate()
 	new_card.name = cur_uname+str(card_ind)

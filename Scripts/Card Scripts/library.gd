@@ -11,7 +11,7 @@ func action(keep=null):
 		if not "action" in card.cardKeywords:
 			game.player_side.draw_cards(1)
 			continue
-		game.set_alert("Choose to keep of discard this card","Waiting for "+game.cur_uname+" to decide whether to keep a card or not")
+		game.set_alert("Choose to keep or discard this card","Waiting for "+game.cur_uname+" to decide whether to keep a card or not")
 		game.card_picker.pick_yes_no(action,"Keep","Discard",[card])
 		return
 	action_finished.call()
