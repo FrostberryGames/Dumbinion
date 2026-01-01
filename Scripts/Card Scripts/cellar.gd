@@ -7,4 +7,4 @@ func callback(cards):
 	for i in cards:
 		game.player_side.discard_card(i)
 	game.player_side.draw_cards(len(cards))
-	game.begin_action()
+	action_finished.call()

@@ -3,7 +3,7 @@ class_name Game
 
 signal turn_finished
 @onready
-var kingdom = $PlayerUI/Field
+var kingdom:Kingdom = $PlayerUI/Field
 @onready
 var player_side:PlayerSide = $PlayerUI/PlayerSide
 @onready
@@ -32,7 +32,9 @@ var attack_finished:Callable
 var attacking_id
 var card_registry={
 	"bureaucrat":Bureaucrat,
-	"witch":Witch
+	"witch":Witch,
+	"bandit":Bandit,
+	"milita":Milita
 }
 
 
@@ -59,6 +61,7 @@ func reaction_callback(cards):
 func start_attack(callback,card_name):
 	attack_num=0
 	attack_finished=callback
+	set_alert("Waiting for players to resolve the attack")
 	attack_players.rpc(card_name)
 
 @rpc("any_peer","reliable")
@@ -154,7 +157,8 @@ func card_to_play_area(card_scene):
 	card.reparent_and_move(play_field)
 
 func trash_card(card):
-	card.queue_free()
+	card.show_card()
+	card.reparent_and_move($"Outer area",1.5,true)
 
 func update_turn_info():
 	update_text.rpc(actions,buys,dollars)
@@ -163,15 +167,17 @@ func update_turn_info():
 func other_players_draw_cards(num):
 	player_side.draw_cards(num)
 
-func action_card_played(card:BaseCard):
+func action_card_played(card:BaseCard,callback=begin_action,bring_to_play=true):
 	actions-=1
 	actions+=card.actions
 	buys+=card.buys
 	dollars+=card.money
-	card.reparent_and_move(play_field)
-	card_to_play_area.rpc(card.scene_file_path)
+	if bring_to_play:
+		card.reparent_and_move(play_field)
+		card_to_play_area.rpc(card.scene_file_path)
 	player_side.draw_cards(card.cards)
 	update_turn_info()
+	card.action_finished=callback
 	card.start_action(self)
 
 func end_buy_phase():

@@ -12,6 +12,7 @@ signal card_selected
 @export var cardDesc:String
 @export var cardKeywords:String
 @export var quantity = 10
+var action_finished:Callable
 var disabled = false
 var moving = false
 var selected = false
@@ -22,9 +23,11 @@ func prompt_select():
 		return
 	$Button.show()
 	
+@warning_ignore("unused_parameter", "shadowed_variable")
 static func attack(game:Game):
 	pass
 		
+@warning_ignore("shadowed_variable")
 func start_react(game):
 	self.game=game
 	reaction()
@@ -109,7 +112,7 @@ func finish_reparent():
 	if get_parent() is Container:
 		get_parent().sort_children.emit()
 
-func reparent_and_move(destination,speed=0.5):
+func reparent_and_move(destination,speed=0.5,delete_after=false):
 	moving=true
 	hide_info()
 	reparent(destination)
@@ -121,4 +124,4 @@ func reparent_and_move(destination,speed=0.5):
 	var duration_in_seconds = speed
 	tween.set_ease(Tween.EASE_OUT)
 	tween.tween_property(self, "global_position", position_end, duration_in_seconds).set_trans(Tween.TRANS_CUBIC)
-	tween.tween_callback(finish_reparent) # wait until move animation is complete
+	tween.tween_callback(queue_free if delete_after else finish_reparent) # wait until move animation is complete

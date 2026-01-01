@@ -407,6 +407,7 @@ horizontal_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PlayerUI/CardPicker/VBoxContainer"]
 layout_mode = 2
+theme_override_constants/separation = 10
 alignment = 1
 
 [node name="SubmitButton" type="Button" parent="PlayerUI/CardPicker/VBoxContainer/HBoxContainer"]
@@ -414,6 +415,14 @@ layout_mode = 2
 size_flags_vertical = 4
 theme_override_font_sizes/font_size = 30
 text = "Confirm"
+
+[node name="YesButton" type="Button" parent="PlayerUI/CardPicker/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+
+[node name="NoButton" type="Button" parent="PlayerUI/CardPicker/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
 
 [node name="WinLabel" type="Label" parent="."]
 visible = false
@@ -453,3 +462,5 @@ script = ExtResource("2_nnt18")
 [connection signal="pressed" from="PlayerUI/HBoxContainer/SubmitButton" to="PlayerUI/PlayerSide" method="_on_submit_button_pressed"]
 [connection signal="sort_children" from="PlayerUI/CardPicker/VBoxContainer/CardPickerContainer" to="PlayerUI/CardPicker/VBoxContainer/CardPickerContainer" method="_on_sort_children"]
 [connection signal="pressed" from="PlayerUI/CardPicker/VBoxContainer/HBoxContainer/SubmitButton" to="PlayerUI/CardPicker" method="_on_submit_button_pressed"]
+[connection signal="pressed" from="PlayerUI/CardPicker/VBoxContainer/HBoxContainer/YesButton" to="PlayerUI/CardPicker" method="_on_yes_button_pressed"]
+[connection signal="pressed" from="PlayerUI/CardPicker/VBoxContainer/HBoxContainer/NoButton" to="PlayerUI/CardPicker" method="_on_no_button_pressed"]

@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://c8afp8g8iigcu"]
+
+[ext_resource type="PackedScene" uid="uid://djkm75sn2env" path="res://Scenes/base_card.tscn" id="1_e2sh2"]
+[ext_resource type="Script" uid="uid://dtdb8us611pmk" path="res://Scripts/Card Scripts/library.gd" id="2_hikum"]
+[ext_resource type="Texture2D" uid="uid://b3mf40cgwdeuu" path="res://Assets/Card Images/library.jpg" id="3_53nik"]
+
+[node name="Library" instance=ExtResource("1_e2sh2")]
+script = ExtResource("2_hikum")
+actionName = "library"
+cardTags = "Action"
+cost = 5
+cardDesc = "Draw until you have 7 cards in hand, skipping any Action cards you choose to; set those aside, discarding them afterwards."
+cardKeywords = "action"
+
+[node name="CardName" parent="VBoxContainer" index="0"]
+text = "Library"
+
+[node name="TextureRect" parent="VBoxContainer/MarginContainer" index="0"]
+texture = ExtResource("3_53nik")

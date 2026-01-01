@@ -3,8 +3,7 @@ class_name Bureaucrat
 
 func action():
 	game.gain_card(game.silver)
-	game.start_attack(game.begin_action,actionName)
-	game.set_alert("Waiting for players to resolve the attack")
+	game.start_attack(action_finished,actionName)
 
 static func attack(game:Game):
 	var v_cards = game.player_side.hand.get_children().filter(Game.card_keyword_filter.bind("victory"))

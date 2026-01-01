@@ -7,4 +7,4 @@ func poacher_played():
 func callback(cards):
 	for i in cards:
 		game.player_side.discard_card(i)
-	game.begin_action()
+	action_finished.call()

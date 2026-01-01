@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://bi00o0d3qgmt7"]
+
+[ext_resource type="PackedScene" uid="uid://djkm75sn2env" path="res://Scenes/base_card.tscn" id="1_xlwdo"]
+[ext_resource type="Texture2D" uid="uid://cd84df7wmv832" path="res://Assets/Card Images/throne-room.webp" id="2_8luwp"]
+[ext_resource type="Script" uid="uid://v3a5is1ko6qk" path="res://Scripts/Card Scripts/throne_room.gd" id="2_blskd"]
+
+[node name="Throne Room" instance=ExtResource("1_xlwdo")]
+script = ExtResource("2_blskd")
+actionName = "throne"
+cardTags = "Action"
+cost = 4
+cardDesc = "You may play an Action card from your hand twice."
+cardKeywords = "action"
+
+[node name="CardName" parent="VBoxContainer" index="0"]
+text = "Throne Room"
+
+[node name="TextureRect" parent="VBoxContainer/MarginContainer" index="0"]
+texture = ExtResource("2_8luwp")

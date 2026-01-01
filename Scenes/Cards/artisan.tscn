@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://di2wcddsjq1qg"]
+
+[ext_resource type="PackedScene" uid="uid://djkm75sn2env" path="res://Scenes/base_card.tscn" id="1_tjk5o"]
+[ext_resource type="Script" uid="uid://b30oo1k6if8i6" path="res://Scripts/Card Scripts/artisan.gd" id="2_d14vr"]
+[ext_resource type="Texture2D" uid="uid://dqnmm6wk6ejx1" path="res://Assets/Card Images/artisan.jpg" id="2_nc58f"]
+
+[node name="Artisan" instance=ExtResource("1_tjk5o")]
+script = ExtResource("2_d14vr")
+actionName = "artisan"
+cardTags = "Action"
+cost = 6
+cardDesc = "Gain a card to your hand costing up to $5.Put a card from your hand onto your deck."
+cardKeywords = "action"
+
+[node name="CardName" parent="VBoxContainer" index="0"]
+text = "Artisan"
+
+[node name="TextureRect" parent="VBoxContainer/MarginContainer" index="0"]
+texture = ExtResource("2_nc58f")

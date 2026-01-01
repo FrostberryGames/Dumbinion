@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://brqg6n232yrsg"]
+
+[ext_resource type="PackedScene" uid="uid://djkm75sn2env" path="res://Scenes/base_card.tscn" id="1_4g3jp"]
+[ext_resource type="Texture2D" uid="uid://bb1wj5venoqr" path="res://Assets/Card Images/milita.jpg" id="2_43sui"]
+[ext_resource type="Script" uid="uid://bsqn7ypre4cvf" path="res://Scripts/Card Scripts/milita.gd" id="2_d20el"]
+
+[node name="Milita" instance=ExtResource("1_4g3jp")]
+script = ExtResource("2_d20el")
+actionName = "milita"
+cardTags = "Action - Attack"
+money = 2
+cost = 5
+cardDesc = "Each other player discards down to 3 cards in hand."
+cardKeywords = "action attack"
+
+[node name="CardName" parent="VBoxContainer" index="0"]
+text = "Milita"
+
+[node name="TextureRect" parent="VBoxContainer/MarginContainer" index="0"]
+texture = ExtResource("2_43sui")

@@ -49,6 +49,13 @@ func unprompt_cards_from_hand():
 func placeholder(_x):
 	return true
 
+func get_cards_off_deck(num):
+	if deck.get_child_count() < num:
+		shuffle_discard()
+	var list=deck.get_children().slice(deck.get_child_count()-num)
+	list.reverse()
+	return list
+
 func prompt_multiple_cards(callback,num=999,needed=false,filter:Callable=placeholder):
 	card_callback=callback
 	num_cards=num
@@ -87,12 +94,15 @@ func discard_card(card:BaseCard=null):
 		for c in hand.get_children():
 			c.reparent_and_move(discard)
 		return
+	card.show_card()
+	card.hide_info()
 	if card.get_parent():
 		card.reparent_and_move(discard)
 	else:
 		discard.add_child(card)
 	
 func top_deck(card):
+	card.hide_info()
 	card.reparent_and_move(deck)
 	
 func shuffle_discard():

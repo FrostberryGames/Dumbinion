@@ -1,4 +1,5 @@
 extends HBoxContainer
+class_name Kingdom
 
 var game_over = false
 var cur_card:PanelContainer = null

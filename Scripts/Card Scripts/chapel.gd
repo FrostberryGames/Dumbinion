@@ -7,4 +7,4 @@ func action():
 func callback(cards):
 	for i:BaseCard in cards:
 		game.trash_card(i)
-	game.begin_action()
+	action_finished.call()

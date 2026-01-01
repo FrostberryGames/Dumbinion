@@ -9,4 +9,4 @@ func callback1(card):
 	game.set_alert("Select 1 Treasure to gain","Waiting for "+game.cur_uname+" to buy a treasure")
 func callback2(card):
 	game.take_card_from_kingdom(card).reparent_and_move(game.player_side.hand)
-	game.begin_action()
+	action_finished.call()

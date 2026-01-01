@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://13ko64gop00s"]
+[gd_scene load_steps=4 format=3 uid="uid://13ko64gop00s"]
 
 [ext_resource type="PackedScene" uid="uid://djkm75sn2env" path="res://Scenes/base_card.tscn" id="1_yx0fm"]
+[ext_resource type="Script" uid="uid://i113gbr04cci" path="res://Scripts/Card Scripts/vassal.gd" id="2_6weoj"]
 [ext_resource type="Texture2D" uid="uid://bw1tar5tj4eyd" path="res://Assets/Card Images/vassal.jpg" id="2_oxehf"]
 
 [node name="Vassal" instance=ExtResource("1_yx0fm")]
+script = ExtResource("2_6weoj")
 actionName = "vassal"
 cardTags = "Action"
 money = 2

@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://uanod2goxyn7"]
+
+[ext_resource type="PackedScene" uid="uid://djkm75sn2env" path="res://Scenes/base_card.tscn" id="1_q6epn"]
+[ext_resource type="Texture2D" uid="uid://o6o6knhsvjbu" path="res://Assets/Card Images/remodel.jpg" id="2_4fdim"]
+[ext_resource type="Script" uid="uid://ir6h3gtk6a0e" path="res://Scripts/Card Scripts/remodel.gd" id="2_xsxcs"]
+
+[node name="Remodel" instance=ExtResource("1_q6epn")]
+script = ExtResource("2_xsxcs")
+actionName = "remodel"
+cardTags = "Action"
+cost = 4
+cardDesc = "Trash a card from your hand. Gain a card costing up to $2 more than it."
+cardKeywords = "action"
+
+[node name="CardName" parent="VBoxContainer" index="0"]
+text = "Remodel"
+
+[node name="TextureRect" parent="VBoxContainer/MarginContainer" index="0"]
+texture = ExtResource("2_4fdim")

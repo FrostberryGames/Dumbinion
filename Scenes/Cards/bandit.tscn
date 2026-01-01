@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://dx60a5pwx65ta"]
+
+[ext_resource type="PackedScene" uid="uid://djkm75sn2env" path="res://Scenes/base_card.tscn" id="1_tp30v"]
+[ext_resource type="Script" uid="uid://oor4mrolja78" path="res://Scripts/Card Scripts/bandit.gd" id="2_1kfcu"]
+[ext_resource type="Texture2D" uid="uid://dgqn03qe4wnkl" path="res://Assets/Card Images/bandit.webp" id="3_1kfcu"]
+
+[node name="Bandit" instance=ExtResource("1_tp30v")]
+script = ExtResource("2_1kfcu")
+actionName = "bandit"
+cardTags = "Action - Attack"
+cost = 5
+cardDesc = "Gain a Gold. Each other player reveals the top 2  cards of their deck, trashes a revealed Treasure other than Copper, and discards the rest."
+cardKeywords = "attack action"
+
+[node name="CardName" parent="VBoxContainer" index="0"]
+text = "Bandit"
+
+[node name="TextureRect" parent="VBoxContainer/MarginContainer" index="0"]
+texture = ExtResource("3_1kfcu")
