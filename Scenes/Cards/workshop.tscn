@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://bauyap0c5yees"]
+
+[ext_resource type="PackedScene" uid="uid://djkm75sn2env" path="res://Scenes/base_card.tscn" id="1_qfjb3"]
+[ext_resource type="Script" uid="uid://c0bosp7r6j6ln" path="res://Scripts/Card Scripts/workshop.gd" id="2_182um"]
+[ext_resource type="Texture2D" uid="uid://d6mkms0dbaxa" path="res://Assets/Card Images/workshop.webp" id="3_tafy5"]
+
+[node name="Workshop" instance=ExtResource("1_qfjb3")]
+script = ExtResource("2_182um")
+actionName = "workshop"
+cardTags = "Action"
+cost = 4
+cardDesc = "Gain a card costing up to $4. "
+cardKeywords = "action"
+
+[node name="CardName" parent="VBoxContainer" index="0"]
+text = "Workshop"
+
+[node name="TextureRect" parent="VBoxContainer/MarginContainer" index="0"]
+texture = ExtResource("3_tafy5")

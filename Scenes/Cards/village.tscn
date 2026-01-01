@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://whs0sno3hnkd"]
+[gd_scene load_steps=3 format=3 uid="uid://cgcs5kt61gjwt"]
 
 [ext_resource type="PackedScene" uid="uid://djkm75sn2env" path="res://Scenes/base_card.tscn" id="1_dr0yt"]
 [ext_resource type="Texture2D" uid="uid://dmtscafw5n1bn" path="res://Assets/Card Images/hq720.jpg" id="2_qrpxv"]
@@ -8,7 +8,6 @@ actionName = "village"
 cardTags = "Action"
 cards = 1
 actions = 2
-cardDesc = "action"
 cardKeywords = "action"
 
 [node name="CardName" parent="VBoxContainer" index="0"]

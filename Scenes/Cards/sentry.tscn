@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://dkjoe7y7ouynj"]
+
+[ext_resource type="PackedScene" uid="uid://djkm75sn2env" path="res://Scenes/base_card.tscn" id="1_jljjb"]
+[ext_resource type="Script" uid="uid://cqw8ra0m1dbmp" path="res://Scripts/Card Scripts/sentry.gd" id="2_41yo4"]
+[ext_resource type="Texture2D" uid="uid://ct7n4pf1yd7dn" path="res://Assets/Card Images/sentry.jpg" id="3_kv4ga"]
+
+[node name="Sentry" instance=ExtResource("1_jljjb")]
+script = ExtResource("2_41yo4")
+actionName = "sentry"
+cardTags = "Action"
+cards = 1
+actions = 1
+cost = 5
+cardDesc = "Look at the top 2 cards of your deck. Trash and/or discard any number of them. Put the rest back on top in any order."
+cardKeywords = "action"
+
+[node name="CardName" parent="VBoxContainer" index="0"]
+text = "Sentry"
+
+[node name="TextureRect" parent="VBoxContainer/MarginContainer" index="0"]
+texture = ExtResource("3_kv4ga")

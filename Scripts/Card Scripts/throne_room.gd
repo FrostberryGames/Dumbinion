@@ -3,6 +3,7 @@ extends BaseCard
 var throne_card:BaseCard
 
 func action():
+	game.set_alert("Select an action card to play twice","Waiting for "+game.cur_uname+" to select an action card")
 	if !game.player_side.prompt_multiple_cards(callback,1,false,Game.card_keyword_filter.bind("action")):
 		action_finished.call()
 	
