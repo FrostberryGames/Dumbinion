@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b0otmglffamq6"
-path="res://.godot/imported/Williams Open Pit Mine_0.jpg-111486c251dc47d5b215812cb9a015e2.ctex"
+uid="uid://bbicbsl86sxr3"
+path="res://.godot/imported/market.jpg-d468ff2ab51b562ced22bbd69357041f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Card Images/Williams Open Pit Mine_0.jpg"
-dest_files=["res://.godot/imported/Williams Open Pit Mine_0.jpg-111486c251dc47d5b215812cb9a015e2.ctex"]
+source_file="res://Assets/Card Images/market.jpg"
+dest_files=["res://.godot/imported/market.jpg-d468ff2ab51b562ced22bbd69357041f.ctex"]
 
 [params]
 

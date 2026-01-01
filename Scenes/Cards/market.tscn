@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bnwk7ohkqiwye"]
 
 [ext_resource type="PackedScene" uid="uid://djkm75sn2env" path="res://Scenes/base_card.tscn" id="1_78yvq"]
-[ext_resource type="Texture2D" uid="uid://gpojmpmqfjxg" path="res://Assets/Card Images/market_art.jpg" id="2_hoeaa"]
+[ext_resource type="Texture2D" uid="uid://bbicbsl86sxr3" path="res://Assets/Card Images/market.jpg" id="2_hoeaa"]
 
 [node name="Market" instance=ExtResource("1_78yvq")]
 cardTags = "Action"

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://gpojmpmqfjxg"
-path="res://.godot/imported/market_art.jpg-f9d2bbca5091da9011d73165c45027bc.ctex"
+uid="uid://fs58gsfpt60x"
+path="res://.godot/imported/mine.jpg-49831897d2b9de3bf727ad535b1ab5fe.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Card Images/market_art.jpg"
-dest_files=["res://.godot/imported/market_art.jpg-f9d2bbca5091da9011d73165c45027bc.ctex"]
+source_file="res://Assets/Card Images/mine.jpg"
+dest_files=["res://.godot/imported/mine.jpg-49831897d2b9de3bf727ad535b1ab5fe.ctex"]
 
 [params]
 

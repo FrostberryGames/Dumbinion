@@ -25,7 +25,6 @@ placeholder_text = "Username Here:"
 
 [node name="Ip" type="LineEdit" parent="."]
 layout_mode = 2
-text = "localhost"
 placeholder_text = "Ip Here:"
 
 [node name="HostButton" type="Button" parent="."]

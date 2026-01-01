@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://djkm75sn2env" path="res://Scenes/base_card.tscn" id="1_37byr"]
 [ext_resource type="Script" uid="uid://b8gekwmq7vtp3" path="res://Scripts/Card Scripts/mine.gd" id="2_3rp1p"]
-[ext_resource type="Texture2D" uid="uid://b0otmglffamq6" path="res://Assets/Card Images/Williams Open Pit Mine_0.jpg" id="2_ioors"]
+[ext_resource type="Texture2D" uid="uid://fs58gsfpt60x" path="res://Assets/Card Images/mine.jpg" id="3_ioors"]
 
 [node name="Mine" instance=ExtResource("1_37byr")]
 script = ExtResource("2_3rp1p")
@@ -16,4 +16,4 @@ cardKeywords = "action"
 text = "Mine"
 
 [node name="TextureRect" parent="VBoxContainer/MarginContainer" index="0"]
-texture = ExtResource("2_ioors")
+texture = ExtResource("3_ioors")
