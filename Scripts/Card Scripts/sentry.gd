@@ -10,6 +10,7 @@ func callback(cards):
 	for i in cards:
 		game.trash_card(i)
 	if game.card_picker.card_picker.get_child_count()==0:
+		game.card_picker._ready()
 		action_finished.call()
 		return
 	game.set_alert("Select cards to discard","Waiting for "+game.cur_uname+" to discard cards")
