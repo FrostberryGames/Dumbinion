@@ -8,6 +8,7 @@ actionName = "village"
 cardTags = "Action"
 cards = 1
 actions = 2
+cost = 3
 cardKeywords = "action"
 
 [node name="CardName" parent="VBoxContainer" index="0"]
