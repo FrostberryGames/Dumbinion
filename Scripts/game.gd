@@ -165,7 +165,7 @@ func card_to_play_area(card_scene):
 func trash_card(card):
 	card.show_card()
 	card.reparent_and_move($"Outer area",1.5,true)
-	GlobalAudio._play_trashed_sfx()
+	GlobalAudio._play_trashed_sfx.rpc()
 
 func update_turn_info():
 	update_text.rpc(actions,buys,dollars)

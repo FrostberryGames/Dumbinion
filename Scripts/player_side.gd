@@ -30,7 +30,7 @@ func selector(card):
 				submit_button.disabled=false
 	else:
 		card.selected = false
-		GlobalAudio._play_deselect_sfx()
+		GlobalAudio._play_deselected_sfx()
 		num_selected-=1
 		hand.queue_sort()
 		if required:

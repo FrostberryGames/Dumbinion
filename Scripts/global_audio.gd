@@ -22,12 +22,15 @@ func _play_selected_sfx() -> void:
 func _play_deselected_sfx() -> void:
 	_play_sfx(SelectCardSFX, randf_range(0.6, 0.8))
 
+@rpc("any_peer","call_local")
 func _play_trashed_sfx() -> void:
 	_play_sfx(TrashedSFX, randf_range(0.9, 1.5))
 
+@rpc("any_peer","call_local")
 func _play_buy_sfx() -> void:
 	_play_sfx(BuySFX, randf_range(1, 1.2))
 	
+@rpc("any_peer","call_local")
 func _play_block_sfx() -> void:
 	_play_sfx(BlockSFX, randf_range(1, 1.2))
 	
