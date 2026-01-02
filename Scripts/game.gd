@@ -138,10 +138,10 @@ func start_turn():
 	update_turn_info()
 
 func begin_action():
+	phase_end_button.disabled=false
 	if actions<=0 or not player_side.prompt_cards_from_hand(action_card_played,card_keyword_filter.bind("action")):
 		begin_buy_phase()
 		return
-	phase_end_button.disabled=false
 	set_phase_name.rpc("Action Phase")
 	phase_end_button.text="End Actions"
 	phase="action"
