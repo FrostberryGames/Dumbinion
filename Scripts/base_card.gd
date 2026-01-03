@@ -114,7 +114,7 @@ func finish_reparent():
 
 func reparent_and_move(destination,speed=0.5,delete_after=false):
 	moving=true
-	hide_info()
+	
 	reparent(destination)
 	await get_tree().create_timer(0.01).timeout
 	if(get_parent()!=destination):
@@ -122,6 +122,7 @@ func reparent_and_move(destination,speed=0.5,delete_after=false):
 	var tween:Tween=get_tree().create_tween()
 	var position_end = destination.get_child_position(self)
 	var duration_in_seconds = speed
+	hide_info()
 	tween.set_ease(Tween.EASE_OUT)
 	tween.tween_property(self, "global_position", position_end, duration_in_seconds).set_trans(Tween.TRANS_CUBIC)
 	tween.tween_callback(queue_free if delete_after else finish_reparent) # wait until move animation is complete

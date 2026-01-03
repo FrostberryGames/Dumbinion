@@ -20,8 +20,8 @@ func callback2(cards):
 	for i in cards:
 		game.player_side.discard_card(i)
 	if game.card_picker.card_picker.get_child_count()==0:
-		action_finished.call()
 		game.card_picker._ready()
+		action_finished.call()
 		return
 	if game.card_picker.card_picker.get_child_count()==1:
 		game.player_side.top_deck(game.card_picker.card_picker.get_children()[0])
