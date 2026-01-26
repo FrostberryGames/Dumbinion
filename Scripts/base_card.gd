@@ -114,7 +114,7 @@ func finish_reparent():
 
 func reparent_and_move(destination,speed=0.5,delete_after=false):
 	moving=true
-	
+	hide_info()
 	reparent(destination)
 	await get_tree().create_timer(0.01).timeout
 	if(get_parent()!=destination):
